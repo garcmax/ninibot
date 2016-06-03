@@ -15,7 +15,9 @@ mybot.on("message", function(message) {
 mybot.on("message", function(message) {
     var mentions = message.mentions;
     for(var i = 0; i < mentions.length; i++) {
-      console.log(mentions[i].username);
+      let user = mentions[i];
+      console.log(user.username);
+      mybot.sendMessage(user, "test");
     }
 })
 
