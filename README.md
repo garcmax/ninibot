@@ -1,2 +1,2 @@
-# skeletonNWB
-Skeleton for webapp using node, webpack, babel and ecma6
+# NiniBot
+Discord Bot with various features using [discord.js](https://github.com/hydrabolt/discord.js)
