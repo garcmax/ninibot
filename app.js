@@ -21,7 +21,7 @@ mybot.on("message", function(message) {
     }
 })
 
-mybot.login("ninibot.discord@gmail.com", "Payre0123");
+mybot.login("username", "password");
 
 mybot.on("message", function(message) {
   if(message.content === "!ninibot meurt") {
@@ -34,4 +34,4 @@ mybot.on("message", function(message) {
       });
   }
 });
-// If you still need to login with email and password, use mybot.login("email", "password");
+
