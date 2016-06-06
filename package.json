@@ -4,9 +4,9 @@
   "description": "Discord bot",
   "main": "ninibot.js",
   "scripts": {
-    "build" :"babel ninibot.js -d build",
-    "predev":"babel ninibot.js -d build -s",
-    "dev": "babel-node ./build/ninibot.js"
+    "build" :"babel ninibot.js -d build && cp ./src ./build/src/",
+    "buildev":"babel ninibot.js -d build -s && cp ./src ./build/src/",
+    "dev": "babel-node ninibot.js"
   },
   "repository": {
     "type": "git",
