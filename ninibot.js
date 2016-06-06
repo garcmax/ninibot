@@ -3,8 +3,13 @@
 **/
 'use strict'
 var Discord = require("discord.js");
+import * as login from "../src/admin/login"
+
+
 
 var mybot = new Discord.Client();
+login.login(mybot);
+login.logout(mybot);
 
 mybot.on("message", function(message) {
     if(message.content === "ping") {
@@ -20,18 +25,3 @@ mybot.on("message", function(message) {
       mybot.sendMessage(user, "test");
     }
 })
-
-mybot.login("login", "password");
-
-mybot.on("message", function(message) {
-  if(message.content === "!ninibot meurt") {
-      mybot.logout(function(error) {
-        if (error){
-            console.log(error);
-        } else {
-            console.log("successfully disconnected");
-        }
-      });
-  }
-});
-// If you still need to login with email and password, use mybot.login("email", "password");
