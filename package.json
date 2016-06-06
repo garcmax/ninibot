@@ -1,10 +1,10 @@
 {
-  "name": "NinoBot",
+  "name": "niniBot",
   "version": "0.0.1",
   "description": "Discord bot",
-  "main": "app.js",
+  "main": "ninibot.js",
   "scripts": {
-    "startdev": "npm run app.js"
+    "startdev": "node ninibot.js"
   },
   "repository": {
     "type": "git",
