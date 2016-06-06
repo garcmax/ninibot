@@ -36,7 +36,6 @@ export function imgurSearch(bot, message) {
 }
 
 export function youTubeSearch(bot, message) {
-  bot.reply(message, 'search in progress...');
   LOGGER.LOG(`yt search query : ${message.content.substr(4)}`, message);
   youTube.search(message.content.substr(4), 1, function(error, result) {
     if (error) {
