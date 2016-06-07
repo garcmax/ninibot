@@ -6,7 +6,6 @@ var youTube = new yt();
 var imgurClientId = "Client-ID " + process.env.NODE_IMGUR_CLIENT_ID;
 
 export function multimediaInit() {
-    console.log(process.env.NODE_GOOGLE_API_TOKEN);
     youTube.setKey(process.env.NODE_GOOGLE_API_TOKEN);
 }
 
@@ -20,7 +19,7 @@ export function imgurSearch(bot, message) {
   };
   request(options, function(error, response, body) {
     if (error) {
-      console.log(error);
+      LOGGER.LOG(error, message);
     } else {
       let searchQuery = JSON.parse(body);
       let data = searchQuery.data[0];
@@ -41,7 +40,8 @@ export function youTubeSearch(bot, message) {
   LOGGER.LOG(`yt search query : ${message.content.substr(4)}`, message);
   youTube.search(message.content.substr(4), 1, function(error, result) {
     if (error) {
-      console.log(error);
+      LOGGER.LOG(error, message);
+      bot.reply(message, "I encountered a problem with the search, sorry !");
     }
     else {
       bot.reply(message, "http://www.youtube.com/watch?v=" + result.items[0].id.videoId);

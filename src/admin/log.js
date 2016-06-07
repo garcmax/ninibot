@@ -1,5 +1,9 @@
 export function LOG(log, message) {
   if (process.env.NODE_ENV == 'DEBUG') {
-    console.log(`${message.author.username}@${message.channel.name} ### ${log}`);
+    if (message) {
+      console.log(`${message.author.username}@${message.channel.name} ### ${log}`);
+    } else {
+      console.log(`technical log ### ${log}`);
+    }
   }
 }
