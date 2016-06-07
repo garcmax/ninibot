@@ -6,6 +6,7 @@ var Discord = require("discord.js");
 import * as login from "./src/admin/login"
 import * as ping from "./src/command/ping"
 import * as LOGGER from "./src/admin/log"
+import {youTubeSearch} from "./src/command/multimedia"
 
 
 
@@ -21,9 +22,12 @@ mybot.on("message", function(message) {
     ping.notif(mybot, message);
   }
   if (/^!\w*/.test(text)) {
-    var commandCalled = text.split(/\s/);
-    if (commandCalled[0] === "!ping") {
+    let commandCalled = text.split(/\s/);
+    let command = commandCalled[0];
+    if (command === "!ping") {
       ping.ping(mybot, message);
+    } else if (command === "!yt") {
+      youTubeSearch(mybot, message);
     }
   }
 });
