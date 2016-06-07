@@ -16,18 +16,14 @@ login.logout(mybot);
 mybot.on("message", function(message) {
   var text = message.content;
   console.log(text);
-  if (message.author != mybot.user) {
-    var mentions = message.mentions;
-    for(var i = 0; i < mentions.length; i++) {
-      let user = mentions[i];
-      console.log(user.username);
-      mybot.sendMessage(user, `Hello ${user.username}, ${message.author.username} has notified you in this message : "${message.content}"`);
-    }
-    if (/^!\w*/.test(text)) {
-      var commandCalled = text.split(/\s/);
-      if (commandCalled[0] === "!ping") {
-        ping.ping(mybot, message);
-      }
+  console.log(`on rentre dans la notif ${message.author.id != mybot.user.id}`);
+  if (message.author.id != mybot.user.id) {
+    ping.notif(mybot, message);
+  }
+  if (/^!\w*/.test(text)) {
+    var commandCalled = text.split(/\s/);
+    if (commandCalled[0] === "!ping") {
+      ping.ping(mybot, message);
     }
   }
 });
