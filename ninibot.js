@@ -6,7 +6,7 @@ var Discord = require("discord.js");
 import * as login from "./src/admin/login"
 import * as ping from "./src/command/ping"
 import * as LOGGER from "./src/admin/log"
-import {youTubeSearch} from "./src/command/multimedia"
+import {youTubeSearch, imgurSearch} from "./src/command/multimedia"
 
 
 
@@ -28,6 +28,8 @@ mybot.on("message", function(message) {
       ping.ping(mybot, message);
     } else if (command === "!yt") {
       youTubeSearch(mybot, message);
+    } else if (command === "!imgur") {
+      imgurSearch(mybot, message);
     }
   }
 });

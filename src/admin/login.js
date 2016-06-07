@@ -1,5 +1,5 @@
 'use strict'
-import {youTubeInit} from '../command/multimedia';
+import {multimediaInit} from '../command/multimedia';
 
 export function login(bot) {
   bot.login(process.env.NODE_NINIBOT_LOGIN, process.env.NODE_NINIBOT_PWD, function(error, token) {
@@ -7,7 +7,7 @@ export function login(bot) {
         console.log(error);
     } else {
         console.log("successfully connected");
-        youTubeInit();
+        multimediaInit();
     }
   });
 }
