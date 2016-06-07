@@ -5,6 +5,7 @@
 var Discord = require("discord.js");
 import * as login from "./src/admin/login"
 import * as ping from "./src/command/ping"
+import * as LOGGER from "./src/admin/log"
 
 
 
@@ -15,8 +16,7 @@ login.logout(mybot);
 
 mybot.on("message", function(message) {
   var text = message.content;
-  console.log(text);
-  console.log(`on rentre dans la notif ${message.author.id != mybot.user.id}`);
+  LOGGER.LOG(text, message);
   if (message.author.id != mybot.user.id) {
     ping.notif(mybot, message);
   }
