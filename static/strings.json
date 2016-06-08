@@ -5,7 +5,9 @@
       "helpKO" : "Sorry but i couldn't give me all the help you needed, please forgive me. :confounded:",
       "i18nOK" : "I speak english now ! :flag_gb:",
       "i18nKO" : "Sorry, I didn't learn this language yet. :confounded: I only know [en, fr]",
-      "hintOK" : "I really tried to execute your command but I couldn't. Did you maybe make a mistake ?"
+      "hintOK" : "I really tried to execute your command but I couldn't. Did you maybe make a mistake ?",
+      "multimediaSearchKO" : "I didn't find anything !",
+      "queryKO" : "The interwebs have gone mad, couldn't even try to search !"
   },
   "fr" : {
     "commands" : "```\n!lang <langage> : change la langue de ninibot\n!ping : répond avec un pong. Utile pour savoir si le bot fonctionne toujours.\n!yt <recherche>: retourne la vidéo youtube trouvée à l'aide de la recherche.\n!imgur <recherche> : retourne la première image de la recherche imgur.```",
@@ -13,6 +15,8 @@
     "helpKO" : "Désolé, je n'ai pas pu t'envoyer toute l'aide dont tu avais besoin, excuse moi. :confounded:",
     "i18nOK" : "Je parle français désormais ! :flag_fr:",
     "i18nKO" : "Désolé, je ne parle pas encore cette langue. :confounded: Je ne connais que [en, fr]",
-    "hintOK" : "J'ai vraiment essayé d'éxécuter vos ordres mais j'ai échoué. Peut-être as-tu fais une erreur ?"
+    "hintOK" : "J'ai vraiment essayé d'éxécuter vos ordres mais j'ai échoué. Peut-être as-tu fais une erreur ?",
+    "multimediaSearchKO" : "j'ai rien trouvé !",
+    "queryKO" : "Les interwebs ont cessé de fonctionner, j'ai même pas pu lancer une recherche !"
   }
 }
