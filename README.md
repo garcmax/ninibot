@@ -6,6 +6,8 @@ Discord Bot with various features using [discord.js](https://github.com/hydrabol
 
 !ping : will respond with a pong
 
+!lang "language": niniBot will talk in "language" if strings are in strings.json (French and English are supported, but you can add any language you want)
+
 !imgur "searchquery" : will return the top image matching the query
 
 !yt "searchquery" : will return a youtube video matching the query
