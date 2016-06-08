@@ -1,0 +1,3 @@
+{
+  "commands" : "```\n!ping : will respond with a pong. Useful for knowing if ninibot is still up and running.\n!yt <query>: will return a youtube video matching the query.\n!imgur <query> : will return the top image on imgur matching the query.```"
+}
