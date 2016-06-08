@@ -4,7 +4,7 @@
       "helpOK" : "I just send you all the help you need by PM.",
       "helpKO" : "Sorry but i couldn't give me all the help you needed, please forgive me. :confounded:",
       "i18nOK" : "I speak english now ! :flag_gb:",
-      "i18nKO" : "Sorry, I didn't learn this language yet. :confounded:",
+      "i18nKO" : "Sorry, I didn't learn this language yet. :confounded: I only know [en, fr]",
       "hintOK" : "I really tried to execute your command but I couldn't. Did you maybe make a mistake ?"
   },
   "fr" : {
@@ -12,8 +12,7 @@
     "helpOK" : "Je viens de t'envoyer toute l'aide disponible en MP.",
     "helpKO" : "Désolé, je n'ai pas pu t'envoyer toute l'aide dont tu avais besoin, excuse moi. :confounded:",
     "i18nOK" : "Je parle français désormais ! :flag_fr:",
-    "i18nKO" : "Désolé, je ne parle pas encore cette langue. :confounded:",
+    "i18nKO" : "Désolé, je ne parle pas encore cette langue. :confounded: Je ne connais que [en, fr]",
     "hintOK" : "J'ai vraiment essayé d'éxécuter vos ordres mais j'ai échoué. Peut-être as-tu fais une erreur ?"
   }
-
 }
