@@ -1,9 +1,10 @@
 'use strict'
 import {multimediaInit} from '../command/multimedia';
 import * as LOGGER from "./log"
+import * as Config from "./config"
 
 export function login(bot) {
-  bot.login(process.env.NODE_NINIBOT_LOGIN, process.env.NODE_NINIBOT_PWD, function(error, token) {
+  bot.login(Config.credentials.discordLogin, Config.credentials.discordPwd, function(error, token) {
     if (error){
         LOGGER.LOG(error);
     } else {

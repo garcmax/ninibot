@@ -9,7 +9,7 @@ Discord Bot with various features using [discord.js](https://github.com/hydrabol
 !yt "searchquery" : will return a youtube video matching the query
 
 ### Authorization and Credentials
-You'll need to set some credentials to use imgur and youtube :
+You'll need to set some credentials to use the API on which the bot rely. Thoses credentials are all put in ./src/admin/config.js :
 
 1. process.env.NODE_IMGUR_CLIENT_ID is the clientID for the bot
 2. process.env.NODE_GOOGLE_API_TOKEN is the google api token for the bot (without it, no youtube search !)

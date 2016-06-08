@@ -1,12 +1,13 @@
 import * as LOGGER from "../admin/log"
+import * as Config from "../admin/config"
 
 var request = require('request');
 var yt = require('youtube-node');
 var youTube = new yt();
-var imgurClientId = "Client-ID " + process.env.NODE_IMGUR_CLIENT_ID;
+
 
 export function multimediaInit() {
-    youTube.setKey(process.env.NODE_GOOGLE_API_TOKEN);
+    youTube.setKey(Config.credentials.googleToken);
 }
 
 export function imgurSearch(bot, message) {
@@ -14,7 +15,7 @@ export function imgurSearch(bot, message) {
   let options = {
     url: query,
     headers: {
-      'Authorization' : imgurClientId
+      'Authorization' : Config.credentials.imgurId
     }
   };
   request(options, function(error, response, body) {
