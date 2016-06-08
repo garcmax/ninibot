@@ -1,0 +1,13 @@
+{
+  "en" : {
+      "commands" : "```\n!ping : will respond with a pong. Useful for knowing if ninibot is still up and running.\n!yt <query>: will return a youtube video matching the query.\n!imgur <query> : will return the top image on imgur matching the query.```",
+      "helpOK" : "I just send you all the help you need by PM.",
+      "helpKO" : "sorry but i couldn't give me all the help you needed, please forgive me. :confounded:"
+  },
+  "fr" : {
+    "commands" : "```\n!ping : répond avec un pong. Utile pour savoir si le bot fonctionne toujours.\n!yt <recherche>: retourne la vidéo youtube trouvée à l'aide de la recherche.\n!imgur <recherche> : retourne la première image de la recherche imgur.```",
+    "helpOK" : "je viens de t'envoyer toute l'aide disponible en MP.",
+    "helpKO" : "désolé, je n'ai pas pu t'envoyer toute l'aide dont tu avais besoin, excuse moi. :confounded:"
+  }
+
+}
