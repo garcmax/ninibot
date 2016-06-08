@@ -1,7 +1,7 @@
 {
   "en" : {
       "commands" : "```\n!lang <language> : will change the actual language of ninibot\n!ping : will respond with a pong. Useful for knowing if ninibot is still up and running.\n!yt <query>: will return a youtube video matching the query.\n!imgur <query> : will return the top image on imgur matching the query.```",
-      "helpOK" : "I just send you all the help you need by PM.",
+      "helpOK" : "I just sent you all the help you need by PM.",
       "helpKO" : "Sorry but i couldn't give me all the help you needed, please forgive me. :confounded:",
       "i18nOK" : "I speak english now ! :flag_gb:",
       "i18nKO" : "Sorry, I didn't learn this language yet. :confounded: I only know [en, fr]",

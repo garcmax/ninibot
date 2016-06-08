@@ -19,7 +19,7 @@ login.login(mybot);
 mybot.on("message", function(message) {
   var text = message.content;
   LOGGER.LOG(text, message);
-  if (message.author.id != mybot.user.id) {
+  if (message.author.equals(mybot.user)) {
     ping.notif(mybot, message);
   }
   if (/^!\w*/.test(text)) {
