@@ -15,15 +15,11 @@ export function login(bot) {
 }
 
 export function logout(bot) {
-  bot.on("message", function(message) {
-    if(message.content === "!deco") {
-        bot.logout(function(error) {
-          if (error){
-              LOGGER.LOG(error);
-          } else {
-              LOGGER.LOG("successfully disconnected");
-          }
-        });
+  bot.logout(function(error) {
+    if (error){
+        LOGGER.LOG(error);
+    } else {
+        LOGGER.LOG("successfully disconnected");
     }
   });
 }

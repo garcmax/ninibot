@@ -1,17 +1,19 @@
 {
   "en" : {
-      "commands" : "```\n!ping : will respond with a pong. Useful for knowing if ninibot is still up and running.\n!yt <query>: will return a youtube video matching the query.\n!imgur <query> : will return the top image on imgur matching the query.```",
+      "commands" : "```\n!lang <language> : will change the actual language of ninibot\n!ping : will respond with a pong. Useful for knowing if ninibot is still up and running.\n!yt <query>: will return a youtube video matching the query.\n!imgur <query> : will return the top image on imgur matching the query.```",
       "helpOK" : "I just send you all the help you need by PM.",
       "helpKO" : "Sorry but i couldn't give me all the help you needed, please forgive me. :confounded:",
       "i18nOK" : "I speak english now ! :flag_gb:",
-      "i18nKO" : "Sorry, I didn't learn this language yet. :confounded:"
+      "i18nKO" : "Sorry, I didn't learn this language yet. :confounded:",
+      "hintOK" : "I really tried to execute your command but I couldn't. Did you maybe make a mistake ?"
   },
   "fr" : {
-    "commands" : "```\n!ping : répond avec un pong. Utile pour savoir si le bot fonctionne toujours.\n!yt <recherche>: retourne la vidéo youtube trouvée à l'aide de la recherche.\n!imgur <recherche> : retourne la première image de la recherche imgur.```",
+    "commands" : "```\n!lang <langage> : change la langue de ninibot\n!ping : répond avec un pong. Utile pour savoir si le bot fonctionne toujours.\n!yt <recherche>: retourne la vidéo youtube trouvée à l'aide de la recherche.\n!imgur <recherche> : retourne la première image de la recherche imgur.```",
     "helpOK" : "Je viens de t'envoyer toute l'aide disponible en MP.",
     "helpKO" : "Désolé, je n'ai pas pu t'envoyer toute l'aide dont tu avais besoin, excuse moi. :confounded:",
     "i18nOK" : "Je parle français désormais ! :flag_fr:",
-    "i18nKO" : "Désolé, je ne parle pas encore cette langue. :confounded:"
+    "i18nKO" : "Désolé, je ne parle pas encore cette langue. :confounded:",
+    "hintOK" : "J'ai vraiment essayé d'éxécuter vos ordres mais j'ai échoué. Peut-être as-tu fais une erreur ?"
   }
 
 }

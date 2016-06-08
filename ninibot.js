@@ -15,7 +15,6 @@ import {youTubeSearch, imgurSearch} from "./src/command/multimedia"
 var mybot = new Discord.Client();
 
 login.login(mybot);
-login.logout(mybot);
 
 mybot.on("message", function(message) {
   var text = message.content;
@@ -28,14 +27,18 @@ mybot.on("message", function(message) {
     let command = commandCalled[0];
     if (command === "!ping") {
       ping.ping(mybot, message);
+    } else if (command === "!deco" && process.env.NODE_ENV == 'DEBUG') {
+      login.logout(mybot);
     } else if (command === "!help") {
-      help(mybot, message);
+      help(mybot, message, false);
     } else if (command === "!lang") {
       setting.changeLanguage(mybot, message);
     } else if (command === "!yt") {
       youTubeSearch(mybot, message);
     } else if (command === "!imgur") {
       imgurSearch(mybot, message);
+    } else {
+      help(mybot, message, true);
     }
   }
 });
