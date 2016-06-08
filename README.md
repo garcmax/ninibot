@@ -2,6 +2,8 @@
 Discord Bot with various features using [discord.js](https://github.com/hydrabolt/discord.js)
 
 ### Commands
+!help : PM you a list of all available commands
+
 !ping : will respond with a pong
 
 !imgur "searchquery" : will return the top image matching the query

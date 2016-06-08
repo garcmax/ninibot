@@ -1,4 +1,5 @@
 'use strict'
+var fs = require('fs');
 
 export var credentials = {
   "googleToken" : process.env.NODE_GOOGLE_API_TOKEN,
@@ -6,6 +7,13 @@ export var credentials = {
   "discordLogin" : process.env.NODE_NINIBOT_LOGIN,
   "discordPwd" : process.env.NODE_NINIBOT_PWD
 }
+
+export var strings;
+fs.readFile('./static/strings.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    strings = JSON.parse(data);
+});
+
 
 let instance = null;
 
