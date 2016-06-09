@@ -22,7 +22,7 @@ mybot.on("message", function(message) {
   if (!message.author.equals(mybot.user)) {
     ping.notif(mybot, message);
   }
-  if (/^![\w\s]*$/.test(text)) {
+  if (/^!\w{2,6}\s.*$/.test(text) || /!deco/.test(text)) {
     let commandCalled = text.split(/\s/);
     let command = commandCalled[0];
     if (command === "!ping") {
@@ -33,6 +33,8 @@ mybot.on("message", function(message) {
       help(mybot, message, false);
     } else if (command === "!lang") {
       setting.changeLanguage(mybot, message);
+    } else if (command === "!avatar") {
+      setting.changeAvatar(mybot, message);
     } else if (command === "!yt") {
       youTubeSearch(mybot, message);
     } else if (command === "!imgur") {

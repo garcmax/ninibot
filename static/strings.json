@@ -7,7 +7,9 @@
       "i18nKO" : "Sorry, I didn't learn this language yet. :confounded: I only know [en, fr]",
       "hintOK" : "I really tried to execute your command but I couldn't. Did you maybe make a mistake ?",
       "multimediaSearchKO" : "I didn't find anything !",
-      "queryKO" : "The interwebs have gone mad, couldn't even try to search !"
+      "queryKO" : "The interwebs have gone mad, couldn't even try to search !",
+      "avatarKO" : "Oh no, I couldn't put my new outfit !",
+      "avatarOK" : "Great, a new outfit ! Sance must be happy !"
   },
   "fr" : {
     "commands" : "```\n!lang <langage> : change la langue de ninibot\n!ping : répond avec un pong. Utile pour savoir si le bot fonctionne toujours.\n!yt <recherche>: retourne la vidéo youtube trouvée à l'aide de la recherche.\n!imgur <recherche> : retourne la première image de la recherche imgur.```",
@@ -17,6 +19,8 @@
     "i18nKO" : "Désolé, je ne parle pas encore cette langue. :confounded: Je ne connais que [en, fr]",
     "hintOK" : "J'ai vraiment essayé d'éxécuter vos ordres mais j'ai échoué. Peut-être as-tu fais une erreur ?",
     "multimediaSearchKO" : "j'ai rien trouvé !",
-    "queryKO" : "Les interwebs ont cessé de fonctionner, j'ai même pas pu lancer une recherche !"
+    "queryKO" : "Les interwebs ont cessé de fonctionner, j'ai même pas pu lancer une recherche !",
+    "avatarKO" : "Oh non, je n'ai pas réussi à mettre ma nouvelle tenue !",
+    "avatarOK" : "Chouette, un nouvel habit ! C'est Sance qui va être content."
   }
 }

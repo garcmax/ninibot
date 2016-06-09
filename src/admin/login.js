@@ -8,7 +8,7 @@ export function login(bot) {
     if (error){
         LOGGER.LOG(error);
     } else {
-        LOGGER.LOG("successfully connected");
+        LOGGER.LOG(`successfully connected with ${token}`);
         multimediaInit();
     }
   });
