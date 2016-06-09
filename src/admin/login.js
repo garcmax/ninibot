@@ -9,7 +9,6 @@ export function login(bot) {
         LOGGER.LOG(error);
     } else {
         LOGGER.LOG(`successfully connected with ${token}`);
-        multimediaInit();
     }
   });
 }
