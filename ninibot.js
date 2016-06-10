@@ -22,7 +22,7 @@ mybot.on("message", function(message) {
   if (!message.author.equals(mybot.user)) {
     ping.notif(mybot, message);
   }
-  if (/^!\w{2,6}\s.*$/.test(text) || /!deco/.test(text)) {
+  if (/!deco|!help|!ping/.test(text) || /^!\w{2,6}\s.*$/.test(text)) {
     let commandCalled = text.split(/\s/);
     let command = commandCalled[0];
     if (command === "!ping") {
