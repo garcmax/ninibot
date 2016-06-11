@@ -4,3 +4,6 @@ build/
 
 # Log Files
 *.log
+
+#Conf
+conf.sh
