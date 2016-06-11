@@ -8,6 +8,7 @@ import * as ping from "./src/command/ping"
 import help from "./src/command/help"
 import * as setting from "./src/command/settings"
 import * as LOGGER from "./src/admin/log"
+import update from "./src/admin/update"
 import {youTubeSearch, imgurSearch} from "./src/command/multimedia"
 
 
@@ -39,6 +40,8 @@ mybot.on("message", function(message) {
       youTubeSearch(mybot, message);
     } else if (command === "!imgur") {
       imgurSearch(mybot, message);
+    } else if (command === "!update") {
+      update(mybot, command);
     } else {
       help(mybot, message, true);
     }
