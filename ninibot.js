@@ -41,7 +41,7 @@ mybot.on("message", function(message) {
     } else if (command === "!imgur") {
       imgurSearch(mybot, message);
     } else if (command === "!update") {
-      update(mybot, command);
+      update(mybot, message);
     } else {
       help(mybot, message, true);
     }

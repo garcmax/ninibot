@@ -1,13 +1,20 @@
 #!/bin/bash
 
-echo "We pull from last commit"
-git pull
+GITPULL=`git pull`
 rc=$?
 if [[ $rc != 0 ]]; then
   echo "git pull error"
   exit 1
 fi
-echo "pull successful"
-
-
+LIST=($GITPULL)
+#if [[ ${LIST[1]} = up-to-date. ]]; then
+#  echo "I'm up to date !"
+#  exit 0
+#fi
+echo "Updating to ${LIST[1]}..."
+sleep 1
+echo "Killing me"
+ps -ef | grep babel-node | grep -v grep | awk '{print $2}' | xargs kill
+sleep 1
+echo "mon script existe toujours"
 exit 0
