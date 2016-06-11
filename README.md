@@ -12,6 +12,8 @@ Discord Bot with various features using [discord.js](https://github.com/hydrabol
 
 !yt "searchquery" : will return a youtube video matching the query
 
+!update : update the bot to the last origin/master commit
+
 ### Authorization and Credentials
 You'll need to set some credentials to use the API on which the bot rely. Thoses credentials are all put in ./src/admin/config.js :
 
