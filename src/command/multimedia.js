@@ -37,10 +37,10 @@ export function imgurSearch(bot, message, opts) {
   if (query == -1) {
     bot.reply(message, config.strings[i18n.language].imgurHelp, function (error) {
       if (error) {
-        return 1;
+        bot.reply(message, config.strings[i18n.language].multimediaSearchKO);
       }
-      return 0;
     });
+    return 0;
   }
   let options = {
     url: urlSearch + query,

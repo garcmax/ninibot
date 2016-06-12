@@ -1,17 +1,7 @@
 'use strict'
 var should = require("should");
 
-import * as utils from "../src/utils/utils"
 import {buildQuery} from "../src/command/multimedia"
-
-describe('utils on string', function () {
-  it('should trim of any non printable caracters', function (done) {
-    var test = utils.trim("\bhello");
-    test.length.should.be.equal(5);
-    done();
-  });
-});
-
 
 describe('test on imgur api', function () {
   it ('should recognize no options', function (done) {

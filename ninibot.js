@@ -9,9 +9,6 @@ import help from "./src/command/help"
 import * as setting from "./src/command/settings"
 import * as LOGGER from "./src/admin/log"
 import {youTubeSearch, imgurSearch} from "./src/command/multimedia"
-import * as stringUtils from "./src/utils/utils"
-
-
 
 var mybot = new Discord.Client();
 
@@ -29,6 +26,7 @@ mybot.on("message", function(message) {
   if (/^!\w{2,6}.*$/.test(text)) {
     let options = text.split(/\s/);
     let command = options[0];
+    LOGGER.LOG(`command: ${command}`, message);
     if (command === "!ping") {
       ping.ping(mybot, message);
     } else if (command === "!deco" && process.env.NODE_ENV == 'DEBUG') {
