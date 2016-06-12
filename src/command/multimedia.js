@@ -5,36 +5,24 @@ var i18n = new config.I18N();
 var request = require('request');
 
 export function buildQuery(opts) {
+  LOGGER.LOG(`queryopts: ${opts}`);
   let sort = "";
   let windw = "";
-  let query = "&query=";
+  let query = "/?q=";
   let optIndex = 1;
-  if (opts[1] && opts[1].charAt(0) === "-") {
+  if (opts[optIndex] && opts[optIndex].charAt(0) === "-") {
+    let opt1 = opts[optIndex].substr(1);
+    if (opt1 === "help") {
+      return -1;
+    }
+    sort = "/" + opt1;
     optIndex++;
-    let opt1 = opts[1].substr(1);
-      if (opt1 === "top") {
-        sort = "&sort=top";
-        if (opts[2] && opts[2].charAt(0) === "-") {
-          optIndex++
-          let opt2 = opts[2].substr(1);
-          if (opt2 === "day") {
-            windw = "&window=day";
-          } else if (opt2 === "week") {
-            windw = "&window=week";
-          } else if (opt2 === "month") {
-            windw = "&window=month";
-          } else if (opt2 === "year") {
-            windw = "&window=year";
-          } else {
-            return "bad window"
-          }
-        }
-      } else if (opt1 === "viral") {
-        sort = "&sort=viral";
-      } else {
-        return "bad opt";
-      }
-  }  
+    if (opts[optIndex] && opts[optIndex].charAt(0) === "-") {
+      let opt2 = opts[optIndex].substr(1);
+      windw = "/" + opt2;
+      optIndex++
+    }
+  }
   while (optIndex < opts.length) {
     query = query + opts[optIndex] + " ";
     optIndex++;
@@ -43,13 +31,19 @@ export function buildQuery(opts) {
 }
 
 export function imgurSearch(bot, message, opts) {
-  let urlSearch = "https://api.imgur.com/3/gallery/search/?q=";
+  let urlSearch = "https://api.imgur.com/3/gallery/search";
   let query = buildQuery(opts);
-
-  return 0;
-
+  LOGGER.LOG(`imgur query: ${urlSearch}${query}`);
+  if (query == -1) {
+    bot.reply(message, config.strings[i18n.language].imgurHelp, function (error) {
+      if (error) {
+        return 1;
+      }
+      return 0;
+    });
+  }
   let options = {
-    url: "https://api.imgur.com/3/gallery/search/?q=" + query,
+    url: urlSearch + query,
     headers: {
       'Authorization' : config.credentials.imgurId
     }
