@@ -9,7 +9,8 @@
       "multimediaSearchKO" : "I didn't find anything !",
       "queryKO" : "The interwebs have gone mad, couldn't even try to search !",
       "avatarKO" : "Oh no, I couldn't put my new outfit !",
-      "avatarOK" : "Great, a new outfit ! Sance must be happy !"
+      "avatarOK" : "Great, a new outfit ! Sance must be happy !",
+      "imgurHelp" : "```\nOPTIONS\n-top : will return the top image from -day | -week | -month | -year default : all time for search terms.\n-viral : will return the viral image for search terms.\ndefault: will return hottest image for search terms.\nUSAGE EXAMPLES:\n -!imgur -top -week boobies\n -!imgur -viral boobies\n -!imgur boobies```"
   },
   "fr" : {
     "commands" : "```\n!lang <langage> : change la langue de ninibot\n!ping : répond avec un pong. Utile pour savoir si le bot fonctionne toujours.\n!yt <recherche>: retourne la vidéo youtube trouvée à l'aide de la recherche.\n!imgur <recherche> : retourne la première image de la recherche imgur.```",

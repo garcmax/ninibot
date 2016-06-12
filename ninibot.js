@@ -10,8 +10,6 @@ import * as setting from "./src/command/settings"
 import * as LOGGER from "./src/admin/log"
 import {youTubeSearch, imgurSearch} from "./src/command/multimedia"
 
-
-
 var mybot = new Discord.Client();
 
 login.login(mybot);
@@ -19,12 +17,16 @@ login.login(mybot);
 mybot.on("message", function(message) {
   var text = message.content;
   LOGGER.LOG(text, message);
+
+
   if (!message.author.equals(mybot.user)) {
     ping.notif(mybot, message);
   }
-  if (/!deco|!help|!ping/.test(text) || /^!\w{2,6}\s.*$/.test(text)) {
-    let commandCalled = text.split(/\s/);
-    let command = commandCalled[0];
+
+  if (/^!\w{2,6}.*$/.test(text)) {
+    let options = text.split(/\s/);
+    let command = options[0];
+    LOGGER.LOG(`command: ${command}`, message);
     if (command === "!ping") {
       ping.ping(mybot, message);
     } else if (command === "!deco" && process.env.NODE_ENV == 'DEBUG') {
@@ -38,7 +40,7 @@ mybot.on("message", function(message) {
     } else if (command === "!yt") {
       youTubeSearch(mybot, message);
     } else if (command === "!imgur") {
-      imgurSearch(mybot, message);
+      imgurSearch(mybot, message, options);
     } else {
       help(mybot, message, true);
     }

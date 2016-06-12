@@ -10,5 +10,6 @@ export default function help(bot, message, badCommand) {
       bot.reply(message, config.strings[i18n.language].helpKO);
     }
   });
+  console.log(badCommand);
   badCommand ? bot.reply(message, config.strings[i18n.language].hintOK) : bot.reply(message, config.strings[i18n.language].helpOK);
 }
