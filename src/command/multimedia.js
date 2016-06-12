@@ -70,7 +70,7 @@ export function youTubeSearch(bot, message) {
   let query = encodeUrl(message.content.substr(4));
   let options = {
     url: "https://www.googleapis.com/youtube/v3/search?part=id&maxResults=1&order=relevance&type=video&q=" + query + "&key=" + config.credentials.googleToken,
-  };sdfsf
+  };
   request(options, function(error, response, body) {
     if (error) {
       LOGGER.LOG(error, message);
