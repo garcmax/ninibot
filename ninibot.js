@@ -21,28 +21,28 @@ mybot.on("message", function(message) {
 
   if (!message.author.equals(mybot.user)) {
     ping.notif(mybot, message);
-  }
-
-  if (/^!\w{2,6}.*$/.test(text)) {
-    let options = text.split(/\s/);
-    let command = options[0];
-    LOGGER.LOG(`command: ${command}`, message);
-    if (command === "!ping") {
-      ping.ping(mybot, message);
-    } else if (command === "!deco" && process.env.NODE_ENV == 'DEBUG') {
-      login.logout(mybot);
-    } else if (command === "!help") {
-      help(mybot, message, false);
-    } else if (command === "!lang") {
-      setting.changeLanguage(mybot, message);
-    } else if (command === "!avatar") {
-      setting.changeAvatar(mybot, message);
-    } else if (command === "!yt") {
-      youTubeSearch(mybot, message);
-    } else if (command === "!imgur") {
-      imgurSearch(mybot, message, options);
-    } else {
-      help(mybot, message, true);
+    if (/^!\w{2,6}.*$/.test(text)) {
+      let options = text.split(/\s/);
+      let command = options[0];
+      LOGGER.LOG(`command: ${command}`, message);
+      if (command === "!ping") {
+        ping.ping(mybot, message);
+      } else if (command === "!deco" && process.env.NODE_ENV == 'DEBUG') {
+        login.logout(mybot);
+      } else if (command === "!help") {
+        help(mybot, message, false);
+      } else if (command === "!lang") {
+        setting.changeLanguage(mybot, message);
+      } else if (command === "!avatar") {
+        setting.changeAvatar(mybot, message);
+      } else if (command === "!yt") {
+        youTubeSearch(mybot, message);
+      } else if (command === "!imgur") {
+        imgurSearch(mybot, message, options);
+      } else {
+        help(mybot, message, true);
+      }
     }
   }
+
 });

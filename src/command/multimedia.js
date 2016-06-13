@@ -24,7 +24,7 @@ export function buildQuery(opts) {
     }
   }
   while (optIndex < opts.length) {
-    query = query + opts[optIndex] + " ";
+    query = query + encodeUrl(opts[optIndex]) + " ";
     optIndex++;
   }
   return sort + windw + query;
@@ -52,6 +52,7 @@ export function imgurSearch(bot, message, opts) {
     if (error) {
       LOGGER.LOG(error, message);
     } else {
+      //console.log(response);
       LOGGER.LOG(body, message);
       let res = JSON.parse(body);
       let data = res.data ? res.data[0] : undefined;
@@ -89,6 +90,6 @@ export function youTubeSearch(bot, message) {
   });
 }
 
-function encodeUrl(str) {
+export function encodeUrl(str) {
     return encodeURIComponent(str).replace(/%20/gi, '+');
 }

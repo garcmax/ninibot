@@ -1,7 +1,20 @@
 'use strict'
 var should = require("should");
 
-import {buildQuery} from "../src/command/multimedia"
+import {buildQuery, encodeUrl} from "../src/command/multimedia"
+
+describe('test on encoding url', function() {
+  it('should encode accentuated characters', function (done) {
+    let test = encodeUrl("éèäû");
+    test.should.be.equal("%C3%A9%C3%A8%C3%A4%C3%BB");
+    done();
+  });
+  it('should encode change space in +', function (done) {
+    let test = encodeUrl("a b c");
+    test.should.be.equal("a+b+c");
+    done();
+  });
+});
 
 describe('test on imgur api', function () {
   it ('should recognize no options', function (done) {
