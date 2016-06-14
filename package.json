@@ -22,7 +22,8 @@
   "homepage": "https://github.com/niwamaxou/ninibot",
   "dependencies": {
     "discord.js": "^7.0.1",
-    "request": "2.72.0"
+    "request": "2.72.0",
+    "xml2json": "0.9.1"
   },
   "devDependencies": {
     "babel": "6.5.2",
