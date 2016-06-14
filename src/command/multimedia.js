@@ -52,7 +52,6 @@ export function imgurSearch(bot, message, opts) {
     if (error) {
       LOGGER.LOG(error, message);
     } else {
-      //console.log(response);
       LOGGER.LOG(body, message);
       let res = JSON.parse(body);
       let data = res.data ? res.data[0] : undefined;

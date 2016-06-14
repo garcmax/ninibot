@@ -9,6 +9,7 @@ import help from "./src/command/help"
 import * as setting from "./src/command/settings"
 import * as LOGGER from "./src/admin/log"
 import {youTubeSearch, imgurSearch} from "./src/command/multimedia"
+import {r34} from "./src/command/r34"
 
 var mybot = new Discord.Client();
 
@@ -39,7 +40,10 @@ mybot.on("message", function(message) {
         youTubeSearch(mybot, message);
       } else if (command === "!imgur") {
         imgurSearch(mybot, message, options);
+      } else if (command === "!r34") {
+        r34(mybot, message);
       } else {
+        console.log(`command qui rate ${message.content}`);
         help(mybot, message, true);
       }
     }

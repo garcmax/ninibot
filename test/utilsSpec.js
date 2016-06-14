@@ -1,7 +1,8 @@
 'use strict'
 var should = require("should");
 
-import {buildQuery, encodeUrl} from "../src/command/multimedia"
+import {buildQuery, encodeUrl} from "../src/command/multimedia";
+import {r34} from "../src/command/r34"
 
 describe('test on encoding url', function() {
   it('should encode accentuated characters', function (done) {
@@ -102,3 +103,10 @@ describe('test on imgur api', function () {
     done();
   });
 });
+
+/*describe('rule34', function() {
+  it('should ...', function (done) {
+    r34("","");
+    done();
+  });
+});*/
