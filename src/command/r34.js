@@ -4,7 +4,7 @@ var request = require('request');
 import * as LOGGER from "../admin/log"
 
 export function r34(bot, message) {
-    let query = message.content.substr(5);
+    let query = encodeURIComponent(message.content.substr(5));
     console.log(query);
     let options = {
       url: "http://rule34.xxx/index.php?page=dapi&s=post&q=index&limit=1&tags=" + query
