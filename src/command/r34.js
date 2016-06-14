@@ -14,7 +14,6 @@ export function r34(bot, message) {
         LOGGER.LOG(error, message);
       } else {
         let json = parser.toJson(body);
-        console.log(JSON.parse(json).posts.post.file_url);
         bot.reply(message, "http:" + JSON.parse(json).posts.post.file_url);
       }
     });
