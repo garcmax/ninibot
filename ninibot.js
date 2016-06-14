@@ -40,7 +40,7 @@ mybot.on("message", function(message) {
         youTubeSearch(mybot, message);
       } else if (command === "!imgur") {
         imgurSearch(mybot, message, options);
-      } else if (command === "!34") {
+      } else if (command === "!r34") {
         r34(mybot, message);
       } else {
         help(mybot, message, true);
