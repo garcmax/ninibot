@@ -22,6 +22,7 @@
     "multimediaSearchKO" : "j'ai rien trouvé !",
     "queryKO" : "Les interwebs ont cessé de fonctionner, j'ai même pas pu lancer une recherche !",
     "avatarKO" : "Oh non, je n'ai pas réussi à mettre ma nouvelle tenue !",
-    "avatarOK" : "Chouette, un nouvel habit ! C'est Sance qui va être content."
+    "avatarOK" : "Chouette, un nouvel habit ! C'est Sance qui va être content.",
+    "imgurHelp" : "```\nOPTIONS\n-top : retourne la top image du -day | -week | -month | -year par défaut : de tous les temps pour les termes de recherches.\n-viral : retourne l'image virale pour les termes de recherche.\ndéfaut: retourne l'image la chaude du moment\nEXEMPLES:\n -!imgur -top -week boobies\n -!imgur -viral boobies\n -!imgur boobies```"
   }
 }
