@@ -8,7 +8,7 @@ import * as config from "../admin/config"
 export function r34(bot, message) {
     let query = encodeURIComponent(message.content.substr(5));
     let options = {
-      url: "http://rule34.xxx/index.php?page=dapi&s=post&q=index&limit=1&tags=" + query
+      url: "http://rule34.xxx/index.php?page=dapi&s=post&q=index&limit=10&tags=" + query
     };
     request(options, function(error, response, body) {
       if (error) {
@@ -25,11 +25,17 @@ export function r34(bot, message) {
 }
 
 export function buildSuffix(body) {
-  let json = parser.toJson(body);
+  let json = parser.toJson(body, {arrayNotation: true});
   let jsonParsed = JSON.parse(json);
-  let suffix = jsonParsed.posts.post;
-  if (suffix) {
-    return suffix.file_url ? suffix.file_url : 1;
+  let posts = jsonParsed.posts[0];
+  if(posts.post) {
+    let post = posts.post;
+    for (let i = 0; i < post.length; i++) {
+      let filename = post[i].file_url;
+      if (/\.jpeg$|\.jpg$|\.gif$|\.png$/.test(filename)) {
+        return filename;
+      }
+    }
   }
   return 1;
 }

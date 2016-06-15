@@ -2,7 +2,6 @@
 var should = require("should");
 
 import {buildQuery, encodeUrl} from "../src/command/multimedia";
-import {buildSuffix} from "../src/command/r34"
 
 describe('test on encoding url', function() {
   it('should encode accentuated characters', function (done) {
@@ -100,19 +99,6 @@ describe('test on imgur api', function () {
     message.content = "!imgur -help";
     let options = message.content.split(/\s/);
     buildQuery(options).should.be.equal(-1);
-    done();
-  });
-});
-
-describe('rule34', function() {
-  it('should return suffix', function (done) {
-    let xml = '<posts count="16" offset="0"><post height="1125" score="27" file_url="2" /></posts>'
-    buildSuffix(xml).should.be.equal("2");
-    done();
-  });
-  it('should return 1', function (done) {
-    let xml = '<posts count="0" offset="0" />'
-    buildSuffix(xml).should.be.equal(1);
     done();
   });
 });
