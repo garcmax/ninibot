@@ -1,7 +1,9 @@
 'use strict'
+const exec = require('child_process').exec;
+
 import {multimediaInit} from '../command/multimedia';
-import * as LOGGER from "./log"
-import * as Config from "./config"
+import * as LOGGER from "./log";
+import * as Config from "./config";
 
 export function login(bot) {
   console.log(Config.credentials);
