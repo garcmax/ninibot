@@ -8,9 +8,9 @@ import * as ping from "./src/command/ping"
 import help from "./src/command/help"
 import * as setting from "./src/command/settings"
 import * as LOGGER from "./src/admin/log"
-import update from "./src/admin/update"
 import {youTubeSearch, imgurSearch} from "./src/command/multimedia"
 import {r34} from "./src/command/r34"
+import update from "./src/admin/update"
 
 var mybot = new Discord.Client();
 
@@ -41,6 +41,8 @@ mybot.on("message", function(message) {
         imgurSearch(mybot, message, options);
       } else if (command === "!r34") {
         r34(mybot, message);
+      }else if (command === "!update") {
+        update(mybot, message);
       } else {
         help(mybot, message, true);
       }
