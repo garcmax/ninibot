@@ -20,11 +20,17 @@ export function throwDice(options) {
 export function dice(bot, message, options) {
   let result = throwDice(options);
   if (result != 1) {
-    bot.message(message.channel, result, function (error) {
+    bot.sendMessage(message.channel, result, function (error) {
+      if (error) {
+        LOGGER.LOG(error, message)
+      }
+    });
+  } else {
+    bot.sendMessage(message.channel, config.strings[i18n.language].diceKO, function (error) {
       if (error) {
         LOGGER.LOG(error, message)
       }
     });
   }
-  return 0;
+  return 1;
 }

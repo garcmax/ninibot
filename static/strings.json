@@ -1,6 +1,6 @@
 {
   "en" : {
-      "commands" : "```\n!lang <language> : will change the actual language of ninibot\n!ping : will respond with a pong. Useful for knowing if ninibot is still up and running.\n!yt <query>: will return a youtube video matching the query.\n!imgur <query> : will return the top image on imgur matching the query. !imgur -help for more options\n!r34 <query> : will return a rule34 image matching the query```",
+      "commands" : "```\n!lang <language> : will change the actual language of ninibot\n!ping : will respond with a pong. Useful for knowing if ninibot is still up and running.\n!yt <query>: will return a youtube video matching the query.\n!imgur <query> : will return the top image on imgur matching the query. !imgur -help for more options\n!r34 <query> : will return a rule34 image matching the query\n!dice -d(2/4/6/8/10/12/20/100) will throw a dice of the <option> number```",
       "helpOK" : "I just sent you all the help you need by PM.",
       "helpKO" : "Sorry but i couldn't give me all the help you needed, please forgive me. :confounded:",
       "i18nOK" : "I speak english now ! :flag_gb:",
@@ -11,10 +11,11 @@
       "avatarKO" : "Oh no, I couldn't put my new outfit !",
       "avatarOK" : "Great, a new outfit ! Sance must be happy !",
       "imgurHelp" : "```\nOPTIONS\n-top : will return the top image from -day | -week | -month | -year default : all time for search terms.\n-viral : will return the viral image for search terms.\ndefault: will return hottest image for search terms.\nUSAGE EXAMPLES:\n -!imgur -top -week boobies\n -!imgur -viral boobies\n -!imgur boobies```",
-      "r34KO" : "Oh senpaï, I'm so sorry I couldn't fulfill your deviant urges !"
+      "r34KO" : "Oh senpaï, I'm so sorry I couldn't fulfill your deviant urges !",
+      "diceKO" : "This is not a valid dice ! (d2 d4 d6 d8 d10 d12 d20 d100)"
   },
   "fr" : {
-    "commands" : "```\n!lang <langage> : change la langue de ninibot\n!ping : répond avec un pong. Utile pour savoir si le bot fonctionne toujours.\n!yt <recherche>: retourne la vidéo youtube trouvée à l'aide de la recherche.\n!imgur <recherche> : retourne la première image de la recherche imgur. !imgur -help pour plus d'options\n!r34 <recherche> : retourne une image soumis à la règle 34 des internets```",
+    "commands" : "```\n!lang <langage> : change la langue de ninibot\n!ping : répond avec un pong. Utile pour savoir si le bot fonctionne toujours.\n!yt <recherche>: retourne la vidéo youtube trouvée à l'aide de la recherche.\n!imgur <recherche> : retourne la première image de la recherche imgur. !imgur -help pour plus d'options\n!r34 <recherche> : retourne une image soumis à la règle 34 des internets\n!dice -d(2/4/6/8/10/12/20/100) jette un dé du nombre en paramètre```",
     "helpOK" : "Je viens de t'envoyer toute l'aide disponible en MP.",
     "helpKO" : "Désolé, je n'ai pas pu t'envoyer toute l'aide dont tu avais besoin, excuse moi. :confounded:",
     "i18nOK" : "Je parle français désormais ! :flag_fr:",
@@ -25,6 +26,7 @@
     "avatarKO" : "Oh non, je n'ai pas réussi à mettre ma nouvelle tenue !",
     "avatarOK" : "Chouette, un nouvel habit ! C'est Sance qui va être content.",
     "imgurHelp" : "```\nOPTIONS\n-top : retourne la top image du -day | -week | -month | -year par défaut : de tous les temps pour les termes de recherches.\n-viral : retourne l'image virale pour les termes de recherche.\ndéfaut: retourne l'image la chaude du moment\nEXEMPLES:\n -!imgur -top -week boobies\n -!imgur -viral boobies\n -!imgur boobies```",
-    "r34KO" : "Oh senpaï, je ne peux pas combler vos désirs déviants !"
+    "r34KO" : "Oh senpaï, je ne peux pas combler vos désirs déviants !",
+    "diceKO" : "Ce n'est pas un dé valide ! (d2 d4 d6 d8 d10 d12 d20 d100)"
   }
 }
