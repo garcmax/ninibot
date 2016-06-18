@@ -13,6 +13,13 @@ describe ('recognizing dice', function () {
     (result <= 2).should.be.true();
     done();
   });
+  it('should throw a d2 with shortcut', function (done) {
+    let message = {"content" : "!d2"};
+    let options = message.content.split(/\s/);
+    let result = throwDice(options);
+    (result >= 1 && result <= 2).should.be.true();
+    done();
+  });
   it('should throw a d20 with shortcut', function (done) {
     let message = {"content" : "!d20"};
     let options = message.content.split(/\s/);
@@ -24,7 +31,8 @@ describe ('recognizing dice', function () {
     let message = {"content" : "!d21"};
     let options = message.content.split(/\s/);
     let result = throwDice(options);
-    (result == 1).should.be.true();
+    console.log(`result : ${result}`);
+    (result == -1).should.be.true();
     done();
   });
 });
@@ -96,16 +104,16 @@ describe('recognizing dice mocked', function() {
     throwDice(options).should.be.equal(4);
     done();
   });
-  it('should fail and return 1', function (done) {
+  it('should fail and return -1', function (done) {
     let message = {"content" : "!dice d13"};
     let options = message.content.split(/\s/);
-    throwDice(options).should.be.equal(1);
+    throwDice(options).should.be.equal(-1);
     done();
   });
-  it('should fail and return 1 with shortcut', function (done) {
+  it('should fail and return -1 with shortcut', function (done) {
     let message = {"content" : "!d13 toto"};
     let options = message.content.split(/\s/);
-    throwDice(options).should.be.equal(1);
+    throwDice(options).should.be.equal(-1);
     done();
   });
 });

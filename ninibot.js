@@ -43,7 +43,7 @@ mybot.on("message", function(message) {
         imgurSearch(mybot, message, options);
       } else if (command === "!r34") {
         r34(mybot, message);
-      } else if (/^!d\w{2,4}/.test(command)) {
+      } else if (/^!d\w{1,4}/.test(command)) {
         dice(mybot, message, options);
       } else {
         help(mybot, message, true);
