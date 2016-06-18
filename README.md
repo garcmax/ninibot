@@ -8,9 +8,13 @@ Discord Bot with various features using [discord.js](https://github.com/hydrabol
 
 !lang "language": niniBot will talk in "language" if strings are in strings.json (French and English are supported, but you can add any language you want)
 
-!imgur "searchquery" : will return the top image matching the query
+!imgur -options "searchquery" : will return an image matching the query (options are top by day/Week/month/year/all time or viral)
 
 !yt "searchquery" : will return a youtube video matching the query
+
+!dice d(2/4/6/8/10/12/20/100) : will return the result of thrown dice. (shortcut !d(2/4/6/8/10/12/20/100))
+
+!r34 "search query" : return an image from rule34xxx matching the query
 
 ### Authorization and Credentials
 You'll need to set some credentials to use the API on which the bot rely. Thoses credentials are all put in ./src/admin/config.js :
