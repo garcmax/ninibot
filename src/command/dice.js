@@ -7,9 +7,9 @@ import * as config from "../admin/config"
 export function throwDice(options) {
   let total = 0;
   let engine = random.engines.mt19937().autoSeed();
-  let dice = options[1];
+  let dice = options[options.length - 1];
   if (/^d[2468]|10|12|20|100$/.test(dice)) {
-    let number = dice.substr(1);
+    let number = dice[0] === "!" ? dice.substr(2) : dice.substr(1);
     let distribution = random.integer(1,number);
     let result = distribution(engine);
     return result;
