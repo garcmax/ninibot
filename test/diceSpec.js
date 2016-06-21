@@ -31,7 +31,6 @@ describe ('recognizing dice', function () {
     let message = {"content" : "!d21"};
     let options = message.content.split(/\s/);
     let result = throwDice(options);
-    console.log(`result : ${result}`);
     (result == -1).should.be.true();
     done();
   });

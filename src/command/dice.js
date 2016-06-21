@@ -8,7 +8,6 @@ export function throwDice(options) {
   let total = 0;
   let engine = random.engines.mt19937().autoSeed();
   let dice = options[options.length - 1];
-  console.log(`dice = ${dice}`);
   if (/^(!d|d)([2468]|10|12|20|100)$/.test(dice)) {
     let number = dice[0] === "!" ? dice.substr(2) : dice.substr(1);
     let distribution = random.integer(1,number);
