@@ -7,3 +7,6 @@ build/
 
 #Conf
 conf.sh
+
+#music file
+*.mp3
