@@ -11,7 +11,7 @@ import * as LOGGER from "./src/admin/log"
 import {youTubeSearch, imgurSearch} from "./src/command/multimedia"
 import {r34} from "./src/command/r34"
 import {dice} from "./src/command/dice"
-import {music} from "./src/command/music"
+import {music, dj} from "./src/command/music"
 
 var mybot = new Discord.Client();
 
@@ -46,6 +46,8 @@ mybot.on("message", function(message) {
         r34(mybot, message);
       } else if (command === "!music") {
         music(mybot, message);
+      } else if (command === "!dj") {
+        dj(mybot, message);
       } else if (/^!d\w{2,4}/.test(command)) {
         dice(mybot, message, options);
       } else {

@@ -10,3 +10,5 @@ conf.sh
 
 #music file
 *.mp3
+*.wma
+*.ogg
