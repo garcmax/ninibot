@@ -5,7 +5,8 @@ import * as Config from "./config"
 
 export function login(bot) {
   console.log(Config.credentials);
-  bot.login(Config.credentials.discordLogin, Config.credentials.discordPwd, function(error, token) {
+  //bot.login(Config.credentials.discordLogin, Config.credentials.discordPwd, function(error, token) {
+  bot.loginWithToken(Config.credentials.discordToken, function (error) {
     if (error){
         LOGGER.LOG(error);
     } else {
@@ -13,6 +14,7 @@ export function login(bot) {
     }
   });
 }
+
 
 export function logout(bot) {
   bot.logout(function(error) {
