@@ -15,6 +15,7 @@ export function login(bot) {
   });
 }
 
+
 export function logout(bot) {
   bot.logout(function(error) {
     if (error){
