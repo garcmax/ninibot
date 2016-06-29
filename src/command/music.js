@@ -19,13 +19,9 @@ export function music(bot, message) {
 }
 
 export function dj(bot, message) {
-  //console.log(message.content);
-
-
-  let stream = youtube(message, {filter: "audioonly"});
-  stream.on('response', function(res) {    
-    console.log("https://www.youtube.com/" + res.req.path)
-    bot.voiceConnection.playRawStream("https://www.youtube.com/" + res.req.path, {volume : 1 }, function (error, streamIntent) {
+  if (message.content) {
+    let toto = youtube(message.content, {filter: 'audioonly'})
+    bot.voiceConnection.playRawStream(toto, {volume : 1 }, function (error, streamIntent) {
       streamIntent.on("error", function (error) {
         console.log("error " + error);
       });
@@ -36,5 +32,6 @@ export function dj(bot, message) {
         console.log("end");
       });
     });
-  });
+  }
+  return 1
 }
