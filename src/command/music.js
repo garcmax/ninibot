@@ -13,14 +13,14 @@ export function music(bot, message) {
     }
     console.log("SUCCESS");
     let url = message.content.substr(7)
-    console.log(url);    
+    console.log(url);
   });
 }
 
 export function dj(bot, message) {
   console.log(message.content);
-  
-  bot.voiceConnection.playFile("./src/command/test.ogg", {volume : 1 }, function (error, streamIntent) {
+
+  bot.voiceConnection.playRawStream("https://www.youtube.com/watch?v=L0MK7qz13bU", {volume : 1 }, function (error, streamIntent) {
       streamIntent.on("error", function (error) {
           console.log("error " + error);
       });
