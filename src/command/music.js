@@ -39,7 +39,7 @@ export function music(bot, message) {
 export function dj(bot, message) {
   if (message.content) {
     let toto = youtube(message.content, {filter: 'audioonly'})
-    bot.voiceConnection.playRawStream(toto, {volume : 0.5 }, function (error, streamIntent) {
+    bot.voiceConnection.playRawStream(toto, {volume : 0.3 }, function (error, streamIntent) {
       streamIntent.on("error", function (error) {
         console.log("error " + error);
       });
