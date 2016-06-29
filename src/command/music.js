@@ -1,5 +1,6 @@
 'use strict'
 var fs = require('fs');
+var youtube = require('ytdl-core');
 
 var vc;
 
@@ -18,17 +19,22 @@ export function music(bot, message) {
 }
 
 export function dj(bot, message) {
-  console.log(message.content);
+  //console.log(message.content);
 
-  bot.voiceConnection.playRawStream("https://www.youtube.com/watch?v=L0MK7qz13bU", {volume : 1 }, function (error, streamIntent) {
+
+  let stream = youtube(message, {filter: "audioonly"});
+  stream.on('response', function(res) {    
+    console.log("https://www.youtube.com/" + res.req.path)
+    bot.voiceConnection.playRawStream("https://www.youtube.com/" + res.req.path, {volume : 1 }, function (error, streamIntent) {
       streamIntent.on("error", function (error) {
-          console.log("error " + error);
+        console.log("error " + error);
       });
       streamIntent.on("time", function (time) {
-          console.log("time " + time);
+        console.log("time " + time);
       });
       streamIntent.on("end", function () {
-          console.log("end");
+        console.log("end");
       });
     });
+  });
 }
