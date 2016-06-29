@@ -38,18 +38,25 @@ export function music(bot, message) {
 
 export function dj(bot, message) {
   if (message.content) {
-    let toto = youtube(message.content, {filter: 'audioonly'})
-    bot.voiceConnection.playRawStream(toto, {volume : 0.3 }, function (error, streamIntent) {
-      streamIntent.on("error", function (error) {
-        console.log("error " + error);
+    try {
+      let toto = youtube(message.content, {filter: 'audioonly'})
+      bot.voiceConnection.playRawStream(toto, {volume : 0.3 }, function (error, streamIntent) {
+        streamIntent.on("error", function (error) {
+          console.log("error " + error);
+        });
+        streamIntent.on("time", function (time) {
+          console.log("time " + time);
+        });
+        streamIntent.on("end", function () {
+          console.log("end");
+        });
       });
-      streamIntent.on("time", function (time) {
-        console.log("time " + time);
-      });
-      streamIntent.on("end", function () {
-        console.log("end");
-      });
-    });
+    } catch (e) {
+      console.log(e);
+    } finally {
+      return 0;
+    }
+
   }
   return 1
 }
