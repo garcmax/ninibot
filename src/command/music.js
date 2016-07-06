@@ -39,18 +39,35 @@ export function music(bot, message) {
   return 1;
 }
 
-export function addMusic(bot, options) {
+/*export function skip(bot) {
+  console.log(skip);
+  try {
+    bot.voiceConnection.stopPlaying();
+  } catch (e) {
+    console.log(e);
+  }
+}*/
+
+export function addMusic(bot, message, options) {
   playList.push(options[1]);   
   console.log(`playlist = ${playList} && notPlaying = ${notPlaying}`);
   if (notPlaying) {
-    play(bot);
+    play(bot, message);
   }
 }
 
-function play(bot) {
+function play(bot, message) {
   console.log(`url to play = ${playList[0]}`); 
   try {
     let toto = youtube(playList[0], {filter: 'audioonly'})
+    toto.on('info', function(info) {
+      console.log(info.length_seconds);
+      bot.sendMessage(message, `Now listening ${info.title}`, function (error) {
+        if (error) {
+          LOGGER.LOG(error, message)
+        }
+      });
+    })
     bot.voiceConnection.playRawStream(toto, {volume : 0.3 }, function (error, streamIntent) {
       streamIntent.on("error", function (error) {
         console.log("error " + error);
@@ -62,9 +79,12 @@ function play(bot) {
       streamIntent.on("end", function () {
         playList.shift();
         console.log(`end of streaming ${playList}`);        
-        if (playList.length >= 1)
+        if (playList.length >= 1) {
           play(bot);
+          console.log(`are we still playing ? ${notPlaying}`)
+        }
         notPlaying = true;
+        console.log(`are we still playing ? ${notPlaying}`)        
       });
     });
   } catch (e) {
