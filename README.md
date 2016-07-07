@@ -16,6 +16,13 @@ Discord Bot with various features using [discord.js](https://github.com/hydrabol
 
 !r34 "search query" : return an image from rule34xxx matching the query
 
+#### Music
+!music : ninibot will try to connect to a music channel (text and voice) so that commands will not flood other channels
+
+!addMusic "searchquery" : will add to playlist, the corresponding youtube video
+
+!skip : will skip current song 
+
 ### Authorization and Credentials
 You'll need to set some credentials to use the API on which the bot rely. Thoses credentials are all put in ./src/admin/config.js :
 
