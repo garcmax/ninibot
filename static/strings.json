@@ -14,7 +14,7 @@
       "r34KO" : "Oh senpaï, I'm so sorry I couldn't fulfill your deviant urges !",
       "diceKO" : "This is not a valid dice ! (d2 d4 d6 d8 d10 d12 d20 d100)",
       "voiceConnectionOK": "I'm ready to diffuse some music senpaï !",
-      "voiceConnectionKO": "Senpaï... You either miss a Music channel or I'm ALREADY connected... BAKA !",
+      "voiceConnectionKO": "Senpaï... You either miss a music channel (text or voice) or I'm ALREADY connected... BAKA !",
       "nowListening": "Now listening : "
   },
   "fr" : {
@@ -32,7 +32,7 @@
     "r34KO" : "Oh senpaï, je ne peux pas combler vos désirs déviants !",
     "diceKO" : "Ce n'est pas un dé valide ! (d2 d4 d6 d8 d10 d12 d20 d100)",
     "voiceConnectionOK": "Je suis prêt à diffuser de la bonne zik senpaï !",
-    "voiceConnectionKO": "Senpaï... Soit il manque le canal Music soit je suis DEJA connecté... BAKA !",
+    "voiceConnectionKO": "Senpaï... Soit il manque le canal music (texte ou voix) soit je suis DEJA connecté... BAKA !",
     "nowListening": "En écoute : "
   }
 }
