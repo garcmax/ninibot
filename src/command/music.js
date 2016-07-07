@@ -42,14 +42,14 @@ export function music(bot, message) {
   return 1;
 }
 
-/*export function skip(bot) {
-  console.log(skip);
+export function skip(bot) {  
   try {
     bot.voiceConnection.stopPlaying();
+    console.log(`playList = ${playList}`);
   } catch (e) {
     console.log(e);
   }
-}*/
+}
 
 export function addMusic(bot, message) {
   let opts = message.content.substr(10);
@@ -89,7 +89,7 @@ function play(bot) {
       streamIntent.on("end", function () {
         playList.shift();
         if (playList.length >= 1) {
-          play(bot);
+         play(bot);
         }
         notPlaying = true;
       });

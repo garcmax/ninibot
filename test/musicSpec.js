@@ -13,7 +13,7 @@ describe('music', function() {
   });
 
   it('should connect to Music channel', function (done) {
-    let message = {"channel": {"server" : {"channels" : [{"name" : "toto", "type":"text"}, {"name" : "Music", "type":"voice"}]}}};
+    let message = {"channel": {"server" : {"channels" : [{"name" : "music", "type":"text"}, {"name" : "Music", "type":"voice"}]}}};
     music(bot, message).should.be.equal(0);
     done();
   });
@@ -24,7 +24,7 @@ describe('music', function() {
   });
   it('should not connect to any channel', function (done) {
     bot.voiceConnection = "exist";
-    let message = {"channel": {"server" : {"channels" : [{"name" : "toto", "type":"text"}, {"name" : "Music", "type":"voice"}]}}};
+    let message = {"channel": {"server" : {"channels" : [{"name" : "musique", "type":"text"}, {"name" : "Music", "type":"voice"}]}}};
     music(bot, message).should.be.equal(1);
     done();
   });

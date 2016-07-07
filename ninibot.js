@@ -46,6 +46,8 @@ mybot.on("message", function(message) {
         r34(mybot, message);
       } else if (command === "!music") {
         music(mybot, message);
+      } else if (command === "!skip" && message.channel.equals(textMusicChannel)) {
+        skip(mybot);
       } else if (command === "!addMusic" && message.channel.equals(textMusicChannel)) {
         addMusic(mybot, message);
       } else if (/^!d\w{2,4}/.test(command)) {
