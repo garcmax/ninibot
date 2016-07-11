@@ -12,7 +12,6 @@ var notPlaying = true;
 
 export function music(bot, message) {
   let vc = message.channel.server.channels;
-  console.log(vc);
   let musicChannel;
   for(let i = 0; i < vc.length; i++) {
     if (vc[i].name === "Music" && vc[i].type === "voice") {
@@ -42,29 +41,57 @@ export function music(bot, message) {
   return 1;
 }
 
-export function skip(bot) {  
+/**
+ * Throw random ECONNRESET error, it will be fixed by newer version of discord.js  
+ */
+/*export function skip(bot) {  
   try {
     bot.voiceConnection.stopPlaying();
-    console.log(`playList = ${playList}`);
   } catch (e) {
     console.log(e);
   }
+}*/
+
+export function deleteMusic(bot, message) {
+  let opts = message.content.substr(5);
+  let notFound = true;
+  let pl = this.getPlayList();
+  for (let i = 1; !notFound || i < pl.length; i++) {
+    if (pl[i] === opts) {
+      notFound = true;
+      pl.splice(i, 1);
+    }
+  }
+  this.setPlayList(pl);
+  return pl;
+}
+
+export function resetMusic(bot, message) {
+  playList = [];
+  return playList;
 }
 
 export function addMusic(bot, message) {
   let opts = message.content.substr(10);
-  console.log(`opts = ${opts}`);
-  ytSearch(opts, function (error, video) {
-    console.log(`retour error = ${error} && video = ${video}`);
+  ytSearch(opts, function (error, video) {    
     if (error) {
       bot.reply(message, config.strings[i18n.language].queryKO);
       return 1;
     }
     playList.push(video);
+    bot.sendMessage(textMusicChannel, `Adding ${playList[playList.length - 1]} to playlist`);
     if (notPlaying) {
       play(bot);
     }
   });
+}
+
+export function getPlayList() {
+  return playList;
+}
+
+export function setPlayList(pl) {
+  playList = pl;
 }
 
 function play(bot) {
@@ -77,21 +104,27 @@ function play(bot) {
         if (error) {
           LOGGER.LOG(error)
         }
-      });
-    })
-    bot.voiceConnection.playRawStream(stream, {volume : 0.3 }, function (error, streamIntent) {
-      streamIntent.on("error", function (error) {
-        console.log("error " + error);
-      });
-      streamIntent.on("time", function (time) {
-        notPlaying = false;
-      });
-      streamIntent.on("end", function () {
-        playList.shift();
-        if (playList.length >= 1) {
-         play(bot);
-        }
-        notPlaying = true;
+        bot.voiceConnection.playRawStream(stream, {volume : 0.3 }, function (error, streamIntent) {
+          streamIntent.on("error", function (error) {
+            console.log("error " + error);
+          });
+          streamIntent.on("time", function (time) {
+            notPlaying = false;
+          });
+          streamIntent.on("end", function () {
+            playList.shift();
+            if (playList.length >= 1) {
+              setTimeout (function() {
+                play(bot);
+              }, 500);
+            } else {
+              LOGGER.LOG("on finit le game");
+              playList = [];
+              notPlaying = true;
+              return 0;
+            }
+          });
+        });
       });
     });
   } catch (e) {
@@ -99,4 +132,5 @@ function play(bot) {
     playList = [];
     notPlaying = true;
   }
+  return 0;
 }

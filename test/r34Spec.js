@@ -3,7 +3,7 @@ var should = require("should");
 
 import {buildSuffix} from "../src/command/r34"
 
-describe('rule34', function() {
+describe('testing rule34', function() {
   it('should return filename.jpg', function (done) {
     let xml = '<posts count="16" offset="0"><post height="1125" score="27" file_url="filename.jpg" /></posts>'
     buildSuffix(xml).should.be.equal("filename.jpg");
