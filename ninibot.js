@@ -11,11 +11,12 @@ import * as LOGGER from "./src/admin/log"
 import {youTubeSearch, imgurSearch} from "./src/command/multimedia"
 import {r34} from "./src/command/r34"
 import {dice} from "./src/command/dice"
-import {music, addMusic, skip, textMusicChannel} from "./src/command/music"
+import * as dj from "./src/command/music"
 
 var mybot = new Discord.Client();
 
 login.login(mybot);
+
 
 mybot.on("message", function(message) {
   var text = message.content;
@@ -23,7 +24,7 @@ mybot.on("message", function(message) {
 
 
   if (!message.author.equals(mybot.user)) {
-    ping.notif(mybot, message);
+    ping.notif(mybot, message);    
     if (/^!\w{2,10}.*$/.test(text)) {
       let options = text.split(/\s/);
       let command = options[0];
@@ -45,11 +46,13 @@ mybot.on("message", function(message) {
       } else if (command === "!r34") {
         r34(mybot, message);
       } else if (command === "!music") {
-        music(mybot, message);
-      } else if (command === "!skip" && message.channel.equals(textMusicChannel)) {
-        skip(mybot);
-      } else if (command === "!addMusic" && message.channel.equals(textMusicChannel)) {
-        addMusic(mybot, message);
+        dj.music(mybot, message);
+      } else if (command === "!add" && message.channel.equals(dj.textMusicChannel)) {
+        dj.addMusic(mybot, message);
+      } else if (command === "!reset" && message.channel.equals(dj.textMusicChannel) && hasDjRole(mybot, message)) {
+        dj.resetMusic(mybot, message);
+      } else if (command === "!del" && message.channel.equals(dj.textMusicChannel) && hasDjRole(mybot, message)) {
+        dj.deleteMusic(mybot, message);
       } else if (/^!d\w{2,4}/.test(command)) {
         dice(mybot, message, options);
       } else {
@@ -59,3 +62,18 @@ mybot.on("message", function(message) {
   }
 
 });
+
+function hasDjRole(bot, message) {
+  let roles = message.channel.server.roles;
+  for (let i = 0; i < roles.length; i++) {
+    if (roles[i].hasPermission("kickMembers")) {
+      console.log(roles[i].name);
+      if (bot.memberHasRole(message.author, roles[i])) {
+        console.log("hasDjRole");
+        return true;
+      }
+    }
+  }
+  console.log("hasNotDjRole");
+  return false;
+}

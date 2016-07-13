@@ -15,7 +15,9 @@
       "diceKO" : "This is not a valid dice ! (d2 d4 d6 d8 d10 d12 d20 d100)",
       "voiceConnectionOK": "I'm ready to diffuse some music senpaï !",
       "voiceConnectionKO": "Senpaï... You either miss a music channel (text or voice) or I'm ALREADY connected... BAKA !",
-      "nowListening": "Now listening : "
+      "nowListening": "Now listening : ",
+      "resetMusic": "I cleaned the playlist !",
+      "musicLengthKO": "Too long senpaï ! Moving to the next song."
   },
   "fr" : {
     "commands" : "```\n!lang <langage> : change la langue de ninibot\n!ping : répond avec un pong. Utile pour savoir si le bot fonctionne toujours.\n!yt <recherche>: retourne la vidéo youtube trouvée à l'aide de la recherche.\n!imgur <recherche> : retourne la première image de la recherche imgur. !imgur -help pour plus d'options\n!r34 <recherche> : retourne une image soumis à la règle 34 des internets\n!dice -d(2/4/6/8/10/12/20/100) jette un dé du nombre en paramètre (raccourci !d<nombre>)\n !music : lance le mode musique de ninibot, il se connectera aux canaux music texte et voix. les commandes suivantes ne sont disponible que dans le canal music texte : !addMusic <recherche> ajoute à la liste de lecture la vidéo youtube correspondante. !skip : passe la chanson en cours.```",
@@ -33,6 +35,8 @@
     "diceKO" : "Ce n'est pas un dé valide ! (d2 d4 d6 d8 d10 d12 d20 d100)",
     "voiceConnectionOK": "Je suis prêt à diffuser de la bonne zik senpaï !",
     "voiceConnectionKO": "Senpaï... Soit il manque le canal music (texte ou voix) soit je suis DEJA connecté... BAKA !",
-    "nowListening": "En écoute : "
+    "nowListening": "En écoute : ",
+    "resetMusic": "J'ai effacé la liste de lecture !",
+    "musicLengthKO": "C'est trop long senpaï ! Je vais jouer la prochaine chanson."
   }
 }

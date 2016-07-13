@@ -63,11 +63,13 @@ export function deleteMusic(bot, message) {
     }
   }
   this.setPlayList(pl);
+  console.log(`playList après le del ${playList}`);
   return pl;
 }
 
 export function resetMusic(bot, message) {
-  playList = [];
+  playList = [];  
+  bot.reply(message, config.strings[i18n.language].resetMusic);
   return playList;
 }
 
@@ -100,32 +102,47 @@ function play(bot) {
     let stream = youtube(playList[0], {filter: 'audioonly'})
     stream.on('info', function(info) {
       console.log(`duration = ${info.length_seconds}`);
-      bot.sendMessage(textMusicChannel, config.strings[i18n.language].nowListening + info.title, function (error) {
-        if (error) {
-          LOGGER.LOG(error)
-        }
-        bot.voiceConnection.playRawStream(stream, {volume : 0.3 }, function (error, streamIntent) {
-          streamIntent.on("error", function (error) {
-            console.log("error " + error);
-          });
-          streamIntent.on("time", function (time) {
-            notPlaying = false;
-          });
-          streamIntent.on("end", function () {
-            playList.shift();
-            if (playList.length >= 1) {
-              setTimeout (function() {
-                play(bot);
-              }, 500);
-            } else {
-              LOGGER.LOG("on finit le game");
-              playList = [];
-              notPlaying = true;
-              return 0;
-            }
+      if (info.length_seconds < 600) {
+        bot.sendMessage(textMusicChannel, config.strings[i18n.language].nowListening + info.title, function (error) {
+          if (error) {
+            LOGGER.LOG(error)
+          }
+          bot.voiceConnection.playRawStream(stream, {volume : 0.3 }, function (error, streamIntent) {
+            streamIntent.on("error", function (error) {
+              console.log("error " + error);
+            });
+            streamIntent.on("time", function (time) {
+              notPlaying = false;
+            });
+            streamIntent.on("end", function () {
+              playList.shift();
+              if (playList.length >= 1) {
+                setTimeout (function() {
+                  play(bot);
+                }, 500);
+              } else {
+                LOGGER.LOG("on finit le game");
+                playList = [];
+                notPlaying = true;
+                return 0;
+              }
+            });
           });
         });
-      });
+      } else {
+        bot.sendMessage(textMusicChannel, config.strings[i18n.language].musicLengthKO);
+        playList.shift();
+        if (playList.length >= 1) {
+          setTimeout (function() {
+            play(bot);
+          }, 500);
+        } else {
+          LOGGER.LOG("on finit le game");
+          playList = [];
+          notPlaying = true;
+          return 0;
+        }
+      }
     });
   } catch (e) {
     console.log(e);
