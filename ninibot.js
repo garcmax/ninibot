@@ -24,7 +24,7 @@ mybot.on("message", function(message) {
 
 
   if (!message.author.equals(mybot.user)) {
-    ping.notif(mybot, message);    
+    ping.notif(mybot, message);
     if (/^!\w{2,10}.*$/.test(text)) {
       let options = text.split(/\s/);
       let command = options[0];
@@ -67,13 +67,10 @@ function hasDjRole(bot, message) {
   let roles = message.channel.server.roles;
   for (let i = 0; i < roles.length; i++) {
     if (roles[i].hasPermission("kickMembers")) {
-      console.log(roles[i].name);
       if (bot.memberHasRole(message.author, roles[i])) {
-        console.log("hasDjRole");
         return true;
       }
     }
   }
-  console.log("hasNotDjRole");
   return false;
 }

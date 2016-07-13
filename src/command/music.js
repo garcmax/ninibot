@@ -42,9 +42,9 @@ export function music(bot, message) {
 }
 
 /**
- * Throw random ECONNRESET error, it will be fixed by newer version of discord.js  
+ * Throw random ECONNRESET error, it will be fixed by newer version of discord.js
  */
-/*export function skip(bot) {  
+/*export function skip(bot) {
   try {
     bot.voiceConnection.stopPlaying();
   } catch (e) {
@@ -63,19 +63,18 @@ export function deleteMusic(bot, message) {
     }
   }
   this.setPlayList(pl);
-  console.log(`playList après le del ${playList}`);
   return pl;
 }
 
 export function resetMusic(bot, message) {
-  playList = [];  
+  playList = [];
   bot.reply(message, config.strings[i18n.language].resetMusic);
   return playList;
 }
 
 export function addMusic(bot, message) {
   let opts = message.content.substr(10);
-  ytSearch(opts, function (error, video) {    
+  ytSearch(opts, function (error, video) {
     if (error) {
       bot.reply(message, config.strings[i18n.language].queryKO);
       return 1;
@@ -97,11 +96,9 @@ export function setPlayList(pl) {
 }
 
 function play(bot) {
-  console.log(`url to play = ${playList[0]}`);
   try {
     let stream = youtube(playList[0], {filter: 'audioonly'})
     stream.on('info', function(info) {
-      console.log(`duration = ${info.length_seconds}`);
       if (info.length_seconds < 600) {
         bot.sendMessage(textMusicChannel, config.strings[i18n.language].nowListening + info.title, function (error) {
           if (error) {
@@ -109,7 +106,7 @@ function play(bot) {
           }
           bot.voiceConnection.playRawStream(stream, {volume : 0.3 }, function (error, streamIntent) {
             streamIntent.on("error", function (error) {
-              console.log("error " + error);
+              LOGGER.LOG(`error : ${error}`);
             });
             streamIntent.on("time", function (time) {
               notPlaying = false;
@@ -121,7 +118,6 @@ function play(bot) {
                   play(bot);
                 }, 500);
               } else {
-                LOGGER.LOG("on finit le game");
                 playList = [];
                 notPlaying = true;
                 return 0;
@@ -137,7 +133,6 @@ function play(bot) {
             play(bot);
           }, 500);
         } else {
-          LOGGER.LOG("on finit le game");
           playList = [];
           notPlaying = true;
           return 0;
@@ -145,7 +140,7 @@ function play(bot) {
       }
     });
   } catch (e) {
-    console.log(e);
+    LOGGER.LOG(e);
     playList = [];
     notPlaying = true;
   }
