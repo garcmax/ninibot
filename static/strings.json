@@ -17,7 +17,9 @@
       "voiceConnectionKO": "Senpaï... You either miss a music channel (text or voice) or I'm ALREADY connected... BAKA !",
       "nowListening": "Now listening : ",
       "resetMusic": "I cleaned the playlist !",
-      "musicLengthKO": "Too long senpaï ! Moving to the next song."
+      "musicLengthKO": "Too long senpaï ! Moving to the next song.",
+      "deleteMusicOK": "The song has been deleted.",
+      "deleteMusicKO": "The song has not been deleted. I've not found it in my playlist !"
   },
   "fr" : {
     "commands" : "```\n!lang <langage> : change la langue de ninibot\n!ping : répond avec un pong. Utile pour savoir si le bot fonctionne toujours.\n!yt <recherche>: retourne la vidéo youtube trouvée à l'aide de la recherche.\n!imgur <recherche> : retourne la première image de la recherche imgur. !imgur -help pour plus d'options\n!r34 <recherche> : retourne une image soumis à la règle 34 des internets\n!dice -d(2/4/6/8/10/12/20/100) jette un dé du nombre en paramètre (raccourci !d<nombre>)\n !music : lance le mode musique de ninibot, il se connectera aux canaux music texte et voix. les commandes suivantes ne sont disponible que dans le canal music texte : !addMusic <recherche> ajoute à la liste de lecture la vidéo youtube correspondante. !skip : passe la chanson en cours.```",
@@ -37,6 +39,8 @@
     "voiceConnectionKO": "Senpaï... Soit il manque le canal music (texte ou voix) soit je suis DEJA connecté... BAKA !",
     "nowListening": "En écoute : ",
     "resetMusic": "J'ai effacé la liste de lecture !",
-    "musicLengthKO": "C'est trop long senpaï ! Je vais jouer la prochaine chanson."
+    "musicLengthKO": "C'est trop long senpaï ! Je vais jouer la prochaine chanson.",
+    "deleteMusicOK": "La chanson a été effacée.",
+    "deleteMusicKO": "La chanson n'a pas été effacée. Je ne l'ai pas trouvée dans la liste de lecture !"
   }
 }

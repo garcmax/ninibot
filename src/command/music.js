@@ -23,7 +23,7 @@ export function music(bot, message) {
   if (musicChannel && textMusicChannel && !bot.voiceConnection) {
     bot.joinVoiceChannel(musicChannel, function (error) {
       if (error) {
-        console.log(error);
+        LOGGER.LOG(error);
       }
       bot.sendMessage(textMusicChannel, config.strings[i18n.language].voiceConnectionOK, function (error) {
         if (error) {
@@ -60,6 +60,7 @@ export function deleteMusic(bot, message) {
     if (pl[i] === opts) {
       notFound = true;
       pl.splice(i, 1);
+      bot.reply(message, config.strings[i18n.language].deleteMusicOK);
     }
   }
   this.setPlayList(pl);
