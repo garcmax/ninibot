@@ -57,15 +57,11 @@ describe('testing playList management', function () {
   var bot = new Discord.Client();
 
   beforeEach(function () {
-    sinon.stub(dj, "getPlayList").returns(
-      ["titi", "toto"]
-    );
-    sinon.stub(bot, "reply");
+    dj.setPlayList(["titi", "toto"]);
   });
 
   afterEach(function () {
-    dj.getPlayList.restore();
-    bot.reply.restore();
+    dj.setPlayList([]);
   });
 
   it('should found nothing to delete ', function (done) {
@@ -87,8 +83,11 @@ describe('testing playList management', function () {
     done();
   })
   it('should reset the playList', function (done) {
+    let botStub = sinon.stub(bot, "reply");
     dj.resetMusic(bot, {});
-    dj.getPlayList().length.should.be.equal(0);
+    botStub.calledOnce.should.be.true;
+    dj.getPlayList().length.should.be.equal(0);    
+    bot.reply.restore();
     done();
   })
 });

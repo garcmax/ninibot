@@ -4,7 +4,7 @@ var youtube = require('ytdl-core');
 var i18n = new config.I18N();
 import * as LOGGER from "../admin/log"
 import * as config from "../admin/config"
-import ytSearch from "../utils/ytSearch"
+import * as yt from "../utils/ytSearch"
 
 var playList = [];
 var textMusicChannel = null;
@@ -25,7 +25,6 @@ export function music(bot, message) {
     bot.joinVoiceChannel(musicChannel, function (error) {
       if (error) {
         LOGGER.LOG(error);
-        console.log(error);
       }
       bot.sendMessage(tmc, config.strings[i18n.language].voiceConnectionOK, function (error) {
         if (error) {
@@ -74,7 +73,7 @@ export function resetMusic(bot, message) {
 
 export function addMusic(bot, message) {
   let opts = message.content.substr(10);
-  ytSearch(opts, function (error, video) {    
+  yt.ytSearch(opts, function (error, video) {    
     if (error) {
       bot.reply(message, config.strings[i18n.language].queryKO);
       return 1;
