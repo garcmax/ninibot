@@ -7,8 +7,8 @@ import * as config from "../admin/config"
 import ytSearch from "../utils/ytSearch"
 
 var playList = [];
-export var textMusicChannel;
-var notPlaying = true;
+var textMusicChannel = null;
+var playing = false;
 
 export function music(bot, message) {
   let vc = message.channel.server.channels;
@@ -17,15 +17,17 @@ export function music(bot, message) {
     if (vc[i].name === "Music" && vc[i].type === "voice") {
       musicChannel = vc[i];
     } else if (vc[i].name === "music" && vc[i].type === "text") {
-      textMusicChannel = vc[i];
+      this.setTextMusicChannel(vc[i]);
     }
   }
-  if (musicChannel && textMusicChannel && !bot.voiceConnection) {
+  let tmc = this.getTextMusicChannel();
+  if (musicChannel && tmc && !bot.voiceConnection) {
     bot.joinVoiceChannel(musicChannel, function (error) {
       if (error) {
+        LOGGER.LOG(error);
         console.log(error);
       }
-      bot.sendMessage(textMusicChannel, config.strings[i18n.language].voiceConnectionOK, function (error) {
+      bot.sendMessage(tmc, config.strings[i18n.language].voiceConnectionOK, function (error) {
         if (error) {
           LOGGER.LOG(error, message)
         }
@@ -56,20 +58,18 @@ export function deleteMusic(bot, message) {
   let opts = message.content.substr(5);
   let notFound = true;
   let pl = this.getPlayList();
-  for (let i = 1; !notFound || i < pl.length; i++) {
+  for (let i = 1; notFound && i < pl.length; i++) {
     if (pl[i] === opts) {
-      notFound = true;
+      notFound = false;
       pl.splice(i, 1);
     }
   }
   this.setPlayList(pl);
-  return pl;
 }
 
 export function resetMusic(bot, message) {
-  playList = [];  
+  this.setPlayList([]);  
   bot.reply(message, config.strings[i18n.language].resetMusic);
-  return playList;
 }
 
 export function addMusic(bot, message) {
@@ -81,28 +81,42 @@ export function addMusic(bot, message) {
     }
     playList.push(video);
     bot.sendMessage(textMusicChannel, `Adding ${playList[playList.length - 1]} to playlist`);
-    if (notPlaying) {
+    if (!this.isPlaying) {
       play(bot);
     }
   });
 }
 
 export function getPlayList() {
-  return playList;
+  return this.playList;
 }
 
 export function setPlayList(pl) {
-  playList = pl;
+  this.playList = pl;
 }
 
-function play(bot) {
-  console.log(`url to play = ${playList[0]}`);
+export function getTextMusicChannel() {
+  return this.textMusicChannel;
+}
+
+export function setTextMusicChannel(tmc) {
+  this.textMusicChannel = tmc;
+}
+
+export function isPlaying() {
+  return this.playing;
+}
+
+export function setPlaying(np) {
+  this.playing = np;
+}
+
+function play(bot) {  
   try {
     let stream = youtube(playList[0], {filter: 'audioonly'})
     stream.on('info', function(info) {
-      console.log(`duration = ${info.length_seconds}`);
       if (info.length_seconds < 600) {
-        bot.sendMessage(textMusicChannel, config.strings[i18n.language].nowListening + info.title, function (error) {
+        bot.sendMessage(this.getTextMusicChannel(), config.strings[i18n.language].nowListening + info.title, function (error) {
           if (error) {
             LOGGER.LOG(error)
           }
@@ -111,7 +125,7 @@ function play(bot) {
               console.log("error " + error);
             });
             streamIntent.on("time", function (time) {
-              notPlaying = false;
+              this.setPlaying(true);
             });
             streamIntent.on("end", function () {
               playList.shift();
@@ -122,14 +136,14 @@ function play(bot) {
               } else {
                 LOGGER.LOG("on finit le game");
                 playList = [];
-                notPlaying = true;
+                this.setPlaying(false);
                 return 0;
               }
             });
           });
         });
       } else {
-        bot.sendMessage(textMusicChannel, config.strings[i18n.language].musicLengthKO);
+        bot.sendMessage(this.getTextMusicChannel(), config.strings[i18n.language].musicLengthKO);
         playList.shift();
         if (playList.length >= 1) {
           setTimeout (function() {
@@ -138,7 +152,7 @@ function play(bot) {
         } else {
           LOGGER.LOG("on finit le game");
           playList = [];
-          notPlaying = true;
+          this.setPlaying(false);
           return 0;
         }
       }
@@ -146,7 +160,7 @@ function play(bot) {
   } catch (e) {
     console.log(e);
     playList = [];
-    notPlaying = true;
+    this.setPlaying(false);
   }
   return 0;
 }

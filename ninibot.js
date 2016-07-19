@@ -18,13 +18,13 @@ var mybot = new Discord.Client();
 login.login(mybot);
 
 
-mybot.on("message", function(message) {
+mybot.on("message", function (message) {
   var text = message.content;
   LOGGER.LOG(text, message);
 
 
   if (!message.author.equals(mybot.user)) {
-    ping.notif(mybot, message);    
+    ping.notif(mybot, message);
     if (/^!\w{2,10}.*$/.test(text)) {
       let options = text.split(/\s/);
       let command = options[0];
@@ -47,11 +47,11 @@ mybot.on("message", function(message) {
         r34(mybot, message);
       } else if (command === "!music") {
         dj.music(mybot, message);
-      } else if (command === "!add" && message.channel.equals(dj.textMusicChannel)) {
+      } else if (command === "!add" && message.channel.equals(dj.getTextMusicChannel())) {
         dj.addMusic(mybot, message);
-      } else if (command === "!reset" && message.channel.equals(dj.textMusicChannel) && hasDjRole(mybot, message)) {
+      } else if (command === "!reset" && message.channel.equals(dj.getTextMusicChannel()) && hasDjRole(mybot, message)) {
         dj.resetMusic(mybot, message);
-      } else if (command === "!del" && message.channel.equals(dj.textMusicChannel) && hasDjRole(mybot, message)) {
+      } else if (command === "!del" && message.channel.equals(dj.getTextMusicChannel()) && hasDjRole(mybot, message)) {
         dj.deleteMusic(mybot, message);
       } else if (/^!d\w{2,4}/.test(command)) {
         dice(mybot, message, options);
