@@ -63,7 +63,6 @@ export function deleteMusic(bot, message) {
     }
   }
   this.setPlayList(pl);
-  console.log(`playList après le del ${playList}`);
   return pl;
 }
 
