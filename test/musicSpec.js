@@ -4,6 +4,7 @@ var sinon = require("sinon");
 var Discord = require("discord.js");
 
 import * as dj from "../src/command/music";
+import * as yt from "../src/utils/ytSearch";
 
 
 
@@ -69,19 +70,25 @@ describe('testing playList management', function () {
     dj.deleteMusic({}, message);
     dj.getPlayList().length.should.be.equal(2);
     done();
-  })
+  });
   it('should delete the second item', function (done) {
     let message = { content: "!del toto" };
     dj.deleteMusic({}, message);
     dj.getPlayList().length.should.be.equal(1);
     done();
-  })
+  });
   it('should not delete the first item', function (done) {
     let message = { content: "!del titi" };
     dj.deleteMusic({}, message);
     dj.getPlayList().length.should.be.equal(2);
     done();
-  })
+  });
+  it('should substr the !del command only', function (done) {
+    let message = { content: "!dele toto" };
+    dj.deleteMusic({}, message);
+    dj.getPlayList().length.should.be.equal(2);
+    done();
+  });
   it('should reset the playList', function (done) {
     let botStub = sinon.stub(bot, "reply");
     dj.resetMusic(bot, {});
@@ -89,5 +96,10 @@ describe('testing playList management', function () {
     dj.getPlayList().length.should.be.equal(0);    
     bot.reply.restore();
     done();
-  })
+  });
+  it ('should add a music to tje playlist', function (done) {
+    let message = {};
+    done();
+  });
 });
+

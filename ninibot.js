@@ -1,17 +1,17 @@
 /**
 ** Here goes the magic
 **/
-'use strict'
+'use strict';
 var Discord = require("discord.js");
-import * as login from "./src/admin/login"
-import * as ping from "./src/command/ping"
-import help from "./src/command/help"
-import * as setting from "./src/command/settings"
-import * as LOGGER from "./src/admin/log"
-import {youTubeSearch, imgurSearch} from "./src/command/multimedia"
-import {r34} from "./src/command/r34"
-import {dice} from "./src/command/dice"
-import * as dj from "./src/command/music"
+import * as login from "./src/admin/login";
+import * as ping from "./src/command/ping";
+import help from "./src/command/help";
+import * as setting from "./src/command/settings";
+import * as LOGGER from "./src/admin/log";
+import {youTubeSearch, imgurSearch} from "./src/command/multimedia";
+import {r34} from "./src/command/r34";
+import {dice} from "./src/command/dice";
+import * as dj from "./src/command/music";
 
 var mybot = new Discord.Client();
 

@@ -1,9 +1,9 @@
 var parser = require('xml2json');
 var request = require('request');
-var i18n = new config.I18N();
 
-import * as LOGGER from "../admin/log"
-import * as config from "../admin/config"
+import * as LOGGER from "../admin/log";
+import * as config from "../admin/config";
+var i18n = new config.I18N();
 
 export function r34(bot, message) {
     let query = encodeURIComponent(message.content.substr(5));

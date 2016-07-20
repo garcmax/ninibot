@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import * as config from "../admin/config";
 
@@ -11,5 +11,5 @@ export default function help(bot, message, badCommand) {
     }
   });
   console.log(badCommand);
-  badCommand ? bot.reply(message, config.strings[i18n.language].hintOK) : bot.reply(message, config.strings[i18n.language].helpOK);
+  bot.reply(message, badCommand ? config.strings[i18n.language].hintOK : config.strings[i18n.language].helpOK);
 }

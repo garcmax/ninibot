@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 var fs = require('fs');
 
 export var credentials = {
@@ -7,7 +7,7 @@ export var credentials = {
   "discordLogin" : process.env.NODE_NINIBOT_LOGIN,
   "discordPwd" : process.env.NODE_NINIBOT_PWD,
   "discordToken" : process.env.NODE_NINIBOT_TOKEN
-}
+};
 
 export var strings;
 fs.readFile('./static/strings.json', 'utf8', function (err, data) {

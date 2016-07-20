@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-import * as LOGGER from "../admin/log"
+import * as LOGGER from "../admin/log";
 
 export function ping(bot, message) {
   bot.reply(message, "pong");

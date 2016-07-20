@@ -1,8 +1,9 @@
-var random = require("random-js");
-var i18n = new config.I18N();
+'use strict';
 
-import * as LOGGER from "../admin/log"
-import * as config from "../admin/config"
+var random = require("random-js");
+import * as LOGGER from "../admin/log";
+import * as config from "../admin/config";
+var i18n = new config.I18N();
 
 export function throwDice(options) {
   let total = 0;
@@ -22,13 +23,13 @@ export function dice(bot, message, options) {
   if (result != -1) {
     bot.sendMessage(message.channel, result, function (error) {
       if (error) {
-        LOGGER.LOG(error, message)
+        LOGGER.LOG(error, message);
       }
     });
   } else {
     bot.sendMessage(message.channel, config.strings[i18n.language].diceKO, function (error) {
       if (error) {
-        LOGGER.LOG(error, message)
+        LOGGER.LOG(error, message);
       }
     });
   }

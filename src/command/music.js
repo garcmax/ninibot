@@ -1,10 +1,10 @@
-'use strict'
+'use strict';
 var fs = require('fs');
 var youtube = require('ytdl-core');
+import * as LOGGER from "../admin/log";
+import * as config from "../admin/config";
 var i18n = new config.I18N();
-import * as LOGGER from "../admin/log"
-import * as config from "../admin/config"
-import * as yt from "../utils/ytSearch"
+import * as yt from "../utils/ytSearch";
 
 var playList = [];
 var textMusicChannel = null;
@@ -28,7 +28,7 @@ export function music(bot, message) {
       }
       bot.sendMessage(tmc, config.strings[i18n.language].voiceConnectionOK, function (error) {
         if (error) {
-          LOGGER.LOG(error, message)
+          LOGGER.LOG(error, message);
         }
       });
     });
@@ -36,7 +36,7 @@ export function music(bot, message) {
   }
   bot.sendMessage(message.channel, config.strings[i18n.language].voiceConnectionKO, function (error) {
     if (error) {
-      LOGGER.LOG(error, message)
+      LOGGER.LOG(error, message);
     }
   });
   return 1;
@@ -72,7 +72,7 @@ export function resetMusic(bot, message) {
 }
 
 export function addMusic(bot, message) {
-  let opts = message.content.substr(10);
+  let opts = message.content.substr(5);
   yt.ytSearch(opts, function (error, video) {    
     if (error) {
       bot.reply(message, config.strings[i18n.language].queryKO);
@@ -112,12 +112,12 @@ export function setPlaying(np) {
 
 function play(bot) {  
   try {
-    let stream = youtube(playList[0], {filter: 'audioonly'})
+    let stream = youtube(playList[0], {filter: 'audioonly'});
     stream.on('info', function(info) {
       if (info.length_seconds < 600) {
         bot.sendMessage(this.getTextMusicChannel(), config.strings[i18n.language].nowListening + info.title, function (error) {
           if (error) {
-            LOGGER.LOG(error)
+            LOGGER.LOG(error);
           }
           bot.voiceConnection.playRawStream(stream, {volume : 0.3 }, function (error, streamIntent) {
             streamIntent.on("error", function (error) {

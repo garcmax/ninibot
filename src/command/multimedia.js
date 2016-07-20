@@ -1,5 +1,7 @@
-import * as LOGGER from "../admin/log"
-import * as config from "../admin/config"
+'use strict';
+
+import * as LOGGER from "../admin/log";
+import * as config from "../admin/config";
 var i18n = new config.I18N();
 
 var request = require('request');
@@ -20,7 +22,7 @@ export function buildQuery(opts) {
     if (opts[optIndex] && opts[optIndex].charAt(0) === "-") {
       let opt2 = opts[optIndex].substr(1);
       windw = "/" + opt2;
-      optIndex++
+      optIndex++;
     }
   }
   while (optIndex < opts.length) {

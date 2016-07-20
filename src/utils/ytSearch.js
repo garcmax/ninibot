@@ -1,5 +1,7 @@
-import * as LOGGER from "../admin/log"
-import * as config from "../admin/config"
+'use strict';
+
+import * as LOGGER from "../admin/log";
+import * as config from "../admin/config";
 
 var request = require('request');
 

@@ -1,7 +1,8 @@
-'use strict'
+'use strict';
 
 var request = require('request');
 
+import * as LOGGER from "../admin/log";
 import * as config from "../admin/config";
 var i18n = new config.I18N();
 
