@@ -98,7 +98,8 @@ describe('testing playList management', function () {
     done();
   });
   it ('should add a music to tje playlist', function (done) {
-    let message = {};
+    let message = { content: "!add tutu"};
+    
     done();
   });
 });
