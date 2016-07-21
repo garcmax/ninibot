@@ -13,7 +13,7 @@ var playing = false;
 export function music(bot, message) {
   let vc = message.channel.server.channels;
   let musicChannel;
-  for(let i = 0; i < vc.length; i++) {
+  for (let i = 0; i < vc.length; i++) {
     if (vc[i].name === "Music" && vc[i].type === "voice") {
       musicChannel = vc[i];
     } else if (vc[i].name === "music" && vc[i].type === "text") {
@@ -67,21 +67,22 @@ export function deleteMusic(bot, message) {
 }
 
 export function resetMusic(bot, message) {
-  this.setPlayList([]);  
+  this.setPlayList([]);
   bot.reply(message, config.strings[i18n.language].resetMusic);
 }
 
 export function addMusic(bot, message) {
   let opts = message.content.substr(5);
-  yt.ytSearch(opts, function (error, video) {    
+  yt.ytSearch(opts, function (error, video) {
+    console.log(`error : ${error} && video : ${video}`);
     if (error) {
       bot.reply(message, config.strings[i18n.language].queryKO);
-      return 1;
-    }
-    playList.push(video);
-    bot.sendMessage(textMusicChannel, `Adding ${playList[playList.length - 1]} to playlist`);
-    if (!this.isPlaying) {
-      play(bot);
+    } else {
+      playList.push(video);
+      bot.sendMessage(textMusicChannel, `Adding ${playList[playList.length - 1]} to playlist`);
+      if (!this.isPlaying) {
+        play(bot);
+      }
     }
   });
 }
@@ -110,16 +111,16 @@ export function setPlaying(np) {
   this.playing = np;
 }
 
-function play(bot) {  
+function play(bot) {
   try {
-    let stream = youtube(playList[0], {filter: 'audioonly'});
-    stream.on('info', function(info) {
+    let stream = youtube(playList[0], { filter: 'audioonly' });
+    stream.on('info', function (info) {
       if (info.length_seconds < 600) {
         bot.sendMessage(this.getTextMusicChannel(), config.strings[i18n.language].nowListening + info.title, function (error) {
           if (error) {
             LOGGER.LOG(error);
           }
-          bot.voiceConnection.playRawStream(stream, {volume : 0.3 }, function (error, streamIntent) {
+          bot.voiceConnection.playRawStream(stream, { volume: 0.3 }, function (error, streamIntent) {
             streamIntent.on("error", function (error) {
               console.log("error " + error);
             });
@@ -129,7 +130,7 @@ function play(bot) {
             streamIntent.on("end", function () {
               playList.shift();
               if (playList.length >= 1) {
-                setTimeout (function() {
+                setTimeout(function () {
                   play(bot);
                 }, 500);
               } else {
@@ -145,7 +146,7 @@ function play(bot) {
         bot.sendMessage(this.getTextMusicChannel(), config.strings[i18n.language].musicLengthKO);
         playList.shift();
         if (playList.length >= 1) {
-          setTimeout (function() {
+          setTimeout(function () {
             play(bot);
           }, 500);
         } else {

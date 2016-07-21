@@ -6,7 +6,7 @@ import * as config from "../admin/config";
 var request = require('request');
 
 
-export default function ytSearch(opts, callback) {
+export function ytSearch(opts, callback) {
     let query = encodeUrl(opts);
     let options = {
         url: "https://www.googleapis.com/youtube/v3/search?part=id&maxResults=1&order=relevance&type=video&q=" + query + "&key=" + config.credentials.googleToken,

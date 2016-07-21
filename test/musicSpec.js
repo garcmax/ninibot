@@ -97,9 +97,14 @@ describe('testing playList management', function () {
     bot.reply.restore();
     done();
   });
-  it ('should add a music to tje playlist', function (done) {
+  it ('should add a music to the playlist', function (done) {
     let message = { content: "!add tutu"};
-    
+    let ytMock = sinon.stub(yt, "ytSearch").callsArgWith(1, {"error":"error"});
+    let replyStub = sinon.stub(bot, "reply");
+    let sendMessageStub = sinon.stub(bot, "sendMessage");
+    let ret = dj.addMusic(bot, message);
+    replyStub.calledOnce.should.be.true;
+    sendMessageStub.called.should.be.false;
     done();
   });
 });
