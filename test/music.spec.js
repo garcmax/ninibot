@@ -97,14 +97,53 @@ describe('testing playList management', function () {
     bot.reply.restore();
     done();
   });
-  it ('should add a music to the playlist', function (done) {
+  it ('should not add the video', function (done) {
     let message = { content: "!add tutu"};
-    let ytMock = sinon.stub(yt, "ytSearch").callsArgWith(1, {"error":"error"});
     let replyStub = sinon.stub(bot, "reply");
     let sendMessageStub = sinon.stub(bot, "sendMessage");
-    let ret = dj.addMusic(bot, message);
+    sinon.stub(yt, "ytSearch").callsArgWith(1, {"error":"error"});
+    dj.addMusic(bot, message);
     replyStub.calledOnce.should.be.true;
     sendMessageStub.called.should.be.false;
+    bot.reply.restore();
+    bot.sendMessage.restore();
+    yt.ytSearch.restore();
+    done();
+  });
+  it ('should add the video but not call play()', function (done) {
+    dj.setPlaying(true);
+    let message = { content: "!add tutu"};
+    let playSpy = sinon.spy(dj, "play");
+    let replyStub = sinon.stub(bot, "reply");
+    let sendMessageStub = sinon.stub(bot, "sendMessage");    
+    sinon.stub(yt, "ytSearch").callsArgWith(1, undefined, "video");
+    dj.addMusic(bot, message);
+    replyStub.calledOnce.should.be.false;
+    sendMessageStub.called.should.be.true;
+    playSpy.called.should.be.false;
+    dj.getPlayList()[2].should.be.equal("video");
+    bot.reply.restore();
+    bot.sendMessage.restore();
+    yt.ytSearch.restore();
+    dj.play.restore();
+    done();
+  });
+  it ('should add the video and call play()', function (done) {
+    dj.setPlaying(false);
+    let message = { content: "!add tutu"};
+    let playSpy = sinon.stub(dj, "play");
+    let replyStub = sinon.stub(bot, "reply");
+    let sendMessageStub = sinon.stub(bot, "sendMessage");    
+    sinon.stub(yt, "ytSearch").callsArgWith(1, undefined, "video");
+    dj.addMusic(bot, message);
+    replyStub.calledOnce.should.be.false;
+    sendMessageStub.called.should.be.true;
+    playSpy.called.should.be.true;
+    dj.getPlayList()[2].should.be.equal("video");
+    bot.reply.restore();
+    bot.sendMessage.restore();
+    yt.ytSearch.restore();
+    dj.play.restore();
     done();
   });
 });

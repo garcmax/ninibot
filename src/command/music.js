@@ -71,20 +71,24 @@ export function resetMusic(bot, message) {
   bot.reply(message, config.strings[i18n.language].resetMusic);
 }
 
+/**
+ * http://stackoverflow.com/questions/20279484/how-to-access-the-correct-this-context-inside-a-callback
+ */
 export function addMusic(bot, message) {
   let opts = message.content.substr(5);
-  yt.ytSearch(opts, function (error, video) {
-    console.log(`error : ${error} && video : ${video}`);
+
+  let callback = (function (error, video) {
     if (error) {
       bot.reply(message, config.strings[i18n.language].queryKO);
     } else {
-      playList.push(video);
+      this.getPlayList().push(video);
       bot.sendMessage(textMusicChannel, `Adding ${playList[playList.length - 1]} to playlist`);
-      if (!this.isPlaying) {
-        play(bot);
+      if (!this.isPlaying()) {
+        this.play(bot);
       }
     }
-  });
+  }).bind(this);
+  yt.ytSearch(opts, callback);
 }
 
 export function getPlayList() {
@@ -111,7 +115,7 @@ export function setPlaying(np) {
   this.playing = np;
 }
 
-function play(bot) {
+export function play(bot) {
   try {
     let stream = youtube(playList[0], { filter: 'audioonly' });
     stream.on('info', function (info) {
