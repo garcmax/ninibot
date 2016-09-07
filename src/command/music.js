@@ -117,7 +117,7 @@ export function setPlaying(np) {
 
 export function play(bot) {
   try {
-    let stream = youtube(playList[0], { filter: 'audioonly' });
+    let stream = youtube(this.getPlayList()[0], { filter: 'audioonly' });
     stream.on('info', function (info) {
       if (info.length_seconds < 600) {
         bot.sendMessage(this.getTextMusicChannel(), config.strings[i18n.language].nowListening + info.title, function (error) {
@@ -132,14 +132,14 @@ export function play(bot) {
               this.setPlaying(true);
             });
             streamIntent.on("end", function () {
-              playList.shift();
-              if (playList.length >= 1) {
+              this.getPlayList().shift();
+              if (this.getPlayList().length >= 1) {
                 setTimeout(function () {
                   play(bot);
                 }, 500);
               } else {
                 LOGGER.LOG("on finit le game");
-                playList = [];
+                this.setPlayList([]);
                 this.setPlaying(false);
                 return 0;
               }
@@ -148,14 +148,14 @@ export function play(bot) {
         });
       } else {
         bot.sendMessage(this.getTextMusicChannel(), config.strings[i18n.language].musicLengthKO);
-        playList.shift();
-        if (playList.length >= 1) {
+       this.getPlayList().shift();
+        if (this.getPlayList().length >= 1) {
           setTimeout(function () {
             play(bot);
           }, 500);
         } else {
           LOGGER.LOG("on finit le game");
-          playList = [];
+          this.setPlayList([]);
           this.setPlaying(false);
           return 0;
         }
@@ -163,7 +163,7 @@ export function play(bot) {
     });
   } catch (e) {
     console.log(e);
-    playList = [];
+    this.setPlayList([]);
     this.setPlaying(false);
   }
   return 0;

@@ -24,7 +24,7 @@ mybot.on("message", function (message) {
 
 
   if (!message.author.equals(mybot.user)) {
-    ping.notif(mybot, message);
+    ping.notif(mybot, message);    
     if (/^!\w{2,10}.*$/.test(text)) {
       let options = text.split(/\s/);
       let command = options[0];
