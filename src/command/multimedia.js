@@ -40,9 +40,8 @@ export function imgurSearch(bot, message, opts) {
         message.channel.sendMessage(config.strings[i18n.language].imgurHelp)
         .then(message => console.log(`Sent message: ${message.content}`))
         .catch(console.log);
-      }
-    return 0;
-  }
+      return 0;
+    }  
   let options = {
     url: urlSearch + query,
     headers: {
