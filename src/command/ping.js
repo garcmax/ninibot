@@ -3,7 +3,9 @@
 import * as LOGGER from "../admin/log";
 
 export function ping(bot, message) {
-  bot.reply(message, "pong");
+  channel.sendMessage('pong!')
+ .then(message => console.log(`Sent message: ${message.content}`))
+ .catch(console.log);
 }
 
 export function notif(bot, message) {

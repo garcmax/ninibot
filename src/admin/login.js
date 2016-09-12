@@ -4,8 +4,9 @@ import * as LOGGER from "./log";
 import * as Config from "./config";
 
 export function login(bot) {
-  console.log(Config.credentials);  
-  bot.loginWithToken(Config.credentials.discordToken, function (error) {
+  console.log(Config.credentials);
+  console.log(process.env.NODE_ENV);  
+  bot.login(Config.credentials.discordToken, function (error) {
     if (error){
         LOGGER.LOG(error);
     }
