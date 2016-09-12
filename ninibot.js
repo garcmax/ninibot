@@ -31,7 +31,7 @@ mybot.on("message", function (message) {
       LOGGER.LOG(`command: ${command}`, message);
       if (command === "!ping") {
         ping.ping(mybot, message);
-      } else if (command === "!deco" && process.env.NODE_ENV == 'DEBUG') {
+      } /*else if (command === "!deco" && process.env.NODE_ENV == 'DEBUG') {
         login.logout(mybot);
       } else if (command === "!help") {
         help(mybot, message, false);
@@ -39,11 +39,11 @@ mybot.on("message", function (message) {
         setting.changeLanguage(mybot, message);
       } else if (command === "!avatar") {
         setting.changeAvatar(mybot, message);
-      } else if (command === "!yt") {
+      } */else if (command === "!yt") {
         youTubeSearch(mybot, message);
       } else if (command === "!imgur") {
         imgurSearch(mybot, message, options);
-      } else if (command === "!r34") {
+      } /*else if (command === "!r34") {
         r34(mybot, message);
       } else if (command === "!music") {
         dj.music(mybot, message);
@@ -57,7 +57,7 @@ mybot.on("message", function (message) {
         dice(mybot, message, options);
       } else {
         help(mybot, message, true);
-      }
+      }*/
     }
   }
 

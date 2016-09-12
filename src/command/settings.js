@@ -10,11 +10,14 @@ export function changeLanguage(bot, message) {
   let newLang = message.content.substr(6);
   if (config.strings[newLang]) {
     i18n.language = newLang;
-    bot.sendMessage(message, config.strings[i18n.language].i18nOK, function(error, message) {
+    message.channel.sendMessage(config.strings[i18n.language].i18nOK)
+    .then(message => console.log(`Sent message: ${message.content}`))
+    .catch(console.log);
+    /*bot.sendMessage(message, config.strings[i18n.language].i18nOK, function(error, message) {
       if (error) {
         bot.reply(message, config.strings[i18n.language].i18nKO);
       }
-    });
+    });*/
   } else {
     bot.reply(message, config.strings[i18n.language].i18nKO);
   }

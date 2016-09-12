@@ -21,17 +21,13 @@ export function throwDice(options) {
 export function dice(bot, message, options) {
   let result = throwDice(options);
   if (result != -1) {
-    bot.sendMessage(message.channel, result, function (error) {
-      if (error) {
-        LOGGER.LOG(error, message);
-      }
-    });
+    message.channel.sendMessage(result)
+        .then(message => console.log(`Sent message: ${message.content}`))
+        .catch(console.log);        
   } else {
-    bot.sendMessage(message.channel, config.strings[i18n.language].diceKO, function (error) {
-      if (error) {
-        LOGGER.LOG(error, message);
-      }
-    });
+    message.channel.sendMessage(config.strings[i18n.language].diceKO)
+        .then(message => console.log(`Sent message: ${message.content}`))
+        .catch(console.log);        
   }
   return 1;
 }

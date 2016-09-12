@@ -6,16 +6,12 @@ import * as Config from "./config";
 export function login(bot) {
   console.log(Config.credentials);
   console.log(process.env.NODE_ENV);  
-  bot.login(Config.credentials.discordToken, function (error) {
-    if (error){
-        LOGGER.LOG(error);
-    }
-  });
+  bot.login(Config.credentials.discordToken);
 }
 
 
 export function logout(bot) {
-  bot.logout(function(error) {
+  bot.destroy().then(error => {    
     if (error){
         LOGGER.LOG(error);
     } else {

@@ -37,11 +37,10 @@ export function imgurSearch(bot, message, opts) {
   let query = buildQuery(opts);
   LOGGER.LOG(`imgur query: ${urlSearch}${query}`);
   if (query == -1) {
-    bot.reply(message, config.strings[i18n.language].imgurHelp, function (error) {
-      if (error) {
-        bot.reply(message, config.strings[i18n.language].multimediaSearchKO);
+        message.channel.sendMessage(config.strings[i18n.language].imgurHelp)
+        .then(message => console.log(`Sent message: ${message.content}`))
+        .catch(console.log);
       }
-    });
     return 0;
   }
   let options = {
@@ -58,11 +57,20 @@ export function imgurSearch(bot, message, opts) {
       let res = JSON.parse(body);
       let data = res.data ? res.data[0] : undefined;
       if(response.statusCode === 200 && data) {
-        bot.reply(message, data.link);
+        //bot.reply(message, data.link);
+        message.channel.sendMessage(data.link)
+        .then(message => console.log(`Sent message: ${message.content}`))
+        .catch(console.log);
       } else if (response.statusCode === 200 && !data) {
-        bot.reply(message, config.strings[i18n.language].multimediaSearchKO);
+        message.channel.sendMessage(config.strings[i18n.language].multimediaSearchKO)
+        .then(message => console.log(`Sent message: ${message.content}`))
+        .catch(console.log);
+        //bot.reply(message, config.strings[i18n.language].multimediaSearchKO);
       } else {
-        bot.reply(message, config.strings[i18n.language].queryKO);
+        message.channel.sendMessage(config.strings[i18n.language].queryKO)
+        .then(message => console.log(`Sent message: ${message.content}`))
+        .catch(console.log);
+        //bot.reply(message, config.strings[i18n.language].queryKO);
       }
     }
   });
@@ -81,11 +89,20 @@ export function youTubeSearch(bot, message) {
       let res = JSON.parse(body);
       let data = res.items ? res.items[0] : undefined;
       if(response.statusCode === 200 && data) {
-        bot.reply(message, "http://www.youtube.com/watch?v=" + data.id.videoId);
+        //bot.reply(message, "http://www.youtube.com/watch?v=" + data.id.videoId);
+         message.channel.sendMessage("http://www.youtube.com/watch?v=" + data.id.videoId)
+        .then(message => console.log(`Sent message: ${message.content}`))
+        .catch(console.log);
       } else if (response.statusCode === 200 && !data) {
-        bot.reply(message, config.strings[i18n.language].multimediaSearchKO);
+        message.channel.sendMessage(config.strings[i18n.language].multimediaSearchKO)
+        .then(message => console.log(`Sent message: ${message.content}`))
+        .catch(console.log);
+        //bot.reply(message, config.strings[i18n.language].multimediaSearchKO);
       } else {
-        bot.reply(message, config.strings[i18n.language].queryKO);
+        message.channel.sendMessage(config.strings[i18n.language].queryKO)
+        .then(message => console.log(`Sent message: ${message.content}`))
+        .catch(console.log);
+        //bot.reply(message, config.strings[i18n.language].queryKO);
       }
     }
   });
